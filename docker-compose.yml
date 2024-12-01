@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+    db:
+        image: mysql:8.0 
+        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+            - "./.data/db:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - 3307:3306
+
+    php:
+        build:
+            context: docker/php8-fpm
+            args:
+                TIMEZONE: ${TIMEZONE}
+        ports:
+            - 33008:33007
+        environment:
+            - COMPOSER_MEMORY_LIMIT=-1
+        volumes:
+            - ${APP_PATH}:/var/www/app
+        depends_on: 
+            - db
+        #links: 
+            #- db:db
+
+    nginx:
+        build: docker/nginx
+        ports:
+            - 8181:80
+        #volumes_from: 
+            #- db
+        #volumes: 
+            #- ${APP_PATH}:/var/www/app
+        volumes:
+            - ./logs/nginx/:/var/log/nginx
+            - ${APP_PATH}:/var/www/app
+            
+        depends_on: 
+            - php 
+    
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        links: 
+            - db:db
+        ports:
+            - 8086:80
+        environment:
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+    node:
+        build: 
+            context: ./frontendStore
+            dockerfile: Dockerfile
+        ports:
+            - '4200:4200'
+        volumes:
+            - ./frontendStore:/frontendStore
+ 

@@ -1,0 +1,42 @@
+<mat-toolbar class="menu-toolbar" >Menu</mat-toolbar>
+<mat-list>
+  <div class="menu-container">
+    <ng-container *ngFor="let item of menu">
+
+      <ng-container *ngIf="item.subMenu === undefined">
+        <mat-list-item
+            *ngIf="item.title"
+            [routerLink]="item.link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+  
+            <div mat-line [ngStyle]="{ color: '#c2c7d0' }">{{ item.title }}</div>
+        </mat-list-item>
+  
+      </ng-container>
+      <ng-container *ngIf="item.subMenu && item.subMenu.length > 0">
+        <mat-expansion-panel [expanded]="item.expanded">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="d-flex align-items-center">
+              <mat-icon [style.color]="item.color">{{ item.icon }}</mat-icon>
+              <span mat-line class="list-item" [ngStyle]="{color: '#c2c7d0'}">{{ item.title }}</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+  
+          <!-- Render the subMenu items -->
+          <mat-list>
+            <mat-list-item *ngFor="let subItem of item.subMenu">
+              <div mat-line class="mat-line ">
+                <mat-icon [style.color]="subItem.color">{{ subItem.icon }}</mat-icon>
+                <a [routerLink]="subItem.link" class="list-item" [ngStyle]="{ color: '#c2c7d0' }">{{ subItem.title }}</a>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </ng-container>
+  
+    </ng-container>
+  </div>
+
+</mat-list>

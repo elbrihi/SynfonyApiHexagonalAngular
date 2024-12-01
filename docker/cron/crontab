@@ -1,0 +1,7 @@
+#!/bin/bash
+
+*/5 * * * * root cd /var/www/app/ ; /usr/local/bin/php  bin/console app:update-newsfeed  >> /var/log/cron.log 2>&1
+
+
+
+

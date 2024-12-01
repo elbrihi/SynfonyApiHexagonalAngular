@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <services>
+
+        <defaults autowire="true" autoconfigure="true" public="false" />
+
+        <service id='Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Processor\State\CategoryPostProcessor'
+        
+                class = 'Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Processor\State\CategoryPostProcessor' >
+            <argument id="api_platform.doctrine.orm.state.persist_processor" />
+            <argument id="api_platform.doctrine.orm.state.remove_processor" />
+        </service>
+           <service id='Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Processor\State\ProductPostProcessor'
+        
+                class = 'Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Processor\State\ProductPostProcessor' >
+            <argument id="api_platform.doctrine.orm.state.persist_processor" />
+            <argument id="api_platform.doctrine.orm.state.remove_processor" />
+        </service>
+    </services>
+    
+</container>

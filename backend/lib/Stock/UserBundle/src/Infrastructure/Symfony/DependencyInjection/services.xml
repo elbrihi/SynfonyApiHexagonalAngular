@@ -1,0 +1,31 @@
+<!-- src/StockUserBundle/Resources/config/services.xml -->
+<services xmlns="http://symfony.com/schema/dic/services"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <defaults autowire="true" autoconfigure="true" public="false" />
+
+
+    <service id="Stock\UserBundle\Presentation\Controller\"
+                resource="../../UI/Controller/*">
+        <tag name="controller.service_arguments" />
+    </service>
+
+
+    <service id="Stock\UserBundle\Application\Service\"
+                resource="../../Application/Service/*" />
+
+    <service id="Stock\UserBundle\Domain\Service\"
+                resource="../../Domain/Service/*" />
+
+    <service id="Stock\UserBundle\Infrastructure\Service\"
+                resource="../../Infrastructure/Service/*" />
+
+    <service id="Stock\UserBundle\Presentation\Controller\"
+                resource="../../Presentation/Controller/*">
+        <tag name="controller.service_arguments" />
+    </service>
+
+
+    
+</services>

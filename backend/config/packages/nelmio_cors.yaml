@@ -1,0 +1,18 @@
+nelmio_cors:
+    defaults:
+        allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']
+        allow_methods: ['POST', 'GET', 'OPTIONS', 'DELETE', 'PUT']
+        allow_headers: ['Content-Type', 'Authorization']
+        expose_headers: ['Link']
+        max_age: 3600
+    paths:
+        '^/api/':
+            allow_origin: ['http://localhost:4200', 'http://172.19.0.3:4200']
+            allow_headers: ['Content-Type', 'Authorization']
+            allow_methods: ['POST', 'GET', 'OPTIONS', 'DELETE', 'PUT', 'PATCH']
+            max_age: 3600
+
+
+
+
+#   allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']

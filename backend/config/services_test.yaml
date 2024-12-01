@@ -1,0 +1,5 @@
+services:
+    App\Service\CategoryManager:
+        decorates: App\Service\CategoryManagerInterface
+        arguments:
+            - '@doctrine.orm.default_entity_manager'

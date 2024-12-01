@@ -1,0 +1,52 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+    
+    Stock\UserBundle\:
+        resource: '../lib/Stock/UserBundle/src/*'
+        exclude: 
+            - '../lib/Stock/UserBundle/src/Domain/Entity/'
+            - '../lib/Stock/UserBundle/src/UI/Controller/'
+            - '../lib/Stock/UserBundle/src/Resources/config/'
+            - '../lib/Stock/UserBundle/src/StockUserBundle.php'
+
+    Stock\ProductBundle\:
+        resource: '../lib/Stock/ProductBundle/src/*'
+        exclude: 
+            - '../lib/Stock/ProductBundle/src/Domain/Entity/'
+            - '../lib/Stock/ProductBundle/src/UI/Controller/'
+            - '../lib/Stock/ProductBundle/src/Interface/Resources/config/'
+            - '../lib/Stock/ProductBundle/src/StockProductBundle.php'
+
+    Stock\SupplierBundle\:
+        resource: '../lib/Stock/SupplierBundle/src/*'
+        exclude: 
+            - '../lib/Stock/SupplierBundle/src/Domain/Entity/'
+            - '../lib/Stock/SupplierBundle/src/UI/Controller/'
+            - '../lib/Stock/SupplierBundle/src/Interface/Resources/config/'
+            - '../lib/Stock/SupplierBundle/src/StockSupplierBundle.php'
+
+
+
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+

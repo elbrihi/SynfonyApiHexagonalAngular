@@ -1,0 +1,93 @@
+mat-nav-list{
+    color: white;
+    border: 5px solid red;
+}
+a{
+  list-style-type: none;
+}
+.menu-toolbar{
+  color: white;
+  padding: 0px;
+  background-color: #343b40;
+  border-bottom: 1px solid #4b545c;
+  
+  
+}
+.menu-container
+{
+}
+mat-list{
+  height: 100%;
+  background-color: #343b40;
+}
+mat-expansion-panel {
+  box-shadow: none;
+  background: transparent;
+}
+
+.menu-toolbar{
+  padding-left: 20px;
+  color: #c2c7d0;
+}
+.mat-expansion-panel-header {
+  padding: 0 16px;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  align-items: center;
+}
+.align-items-center
+{
+}
+.mat-list-icon {
+  padding: 4px;
+}
+
+::ng-deep mat-list-item {
+
+  color: white;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: 0.2s all;
+  box-sizing: border-box;
+}
+::ng-deep mat-icon
+{
+  margin-left: 5px;
+}
+::ng-deep mat-list-item:hover {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.04);
+  border-left: 5px solid white;
+}
+.mat-line{
+  display: flex;
+  align-items: center;
+  color: inherit;
+  justify-content: first baseline;
+  margin-left: 5px;
+;
+}
+.mat-list-base {
+  padding-top: 0;
+}
+
+.mat-list-base .mat-list-item {
+  height: 50px;
+}
+
+.list-item {
+  font-size: 16px;
+  padding-left: 16px;
+}
+
+.mat-line {
+  white-space: normal !important;
+}
+
+.active {
+  background: #94a5ff33 !important;
+  border-left: 4px solid #3f51b5;
+}

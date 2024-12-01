@@ -1,0 +1,11 @@
+# create this file if you need to configure anything
+maker:
+    #root_namespace: 'Stock\ProductBundle\Domain'
+    #root_namespace: 'Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Processor'
+    #root_namespace: 'Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Provider'
+    #root_namespace: 'Stock\UserBundle\Domain'
+    #root_namespace: 'Stock\ProductBundle\Interface'
+    root_namespace: 'Stock\SupplierBundle\Domain'
+    #root_namespace: 'Stock\SupplierBundle\Infrastucture\Persistence\Doctrine\Processor'
+    #root_namespace: 'Stock\'
+    #root_namespace: 'App'

@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <services>
+
+        <defaults autowire="true" autoconfigure="true" public="false" />
+
+        <service id="Stock\UserBundle\Infrastructure\Persistence\Doctrine\Repository\AuthTokenRepository"
+                 class="Stock\UserBundle\Infrastructure\Persistence\Doctrine\Repository\AuthTokenRepository" >
+                 <tag name="doctrine.repository_service"/>
+        </service>
+
+        <service id="Stock\UserBundle\Infrastructure\Persistence\Doctrine\Repository\UserRepository"
+                 class="Stock\UserBundle\Infrastructure\Persistence\Doctrine\Repository\UserRepository" >
+                 <tag name="doctrine.repository_service"/>
+        </service>
+
+    
+         <!-- Register the AuthTokenManager service -->
+        <service id="Stock\UserBundle\Application\Security\Authenticator\ApiTokenAuthenticator" 
+                class="Stock\UserBundle\Application\Security\Authenticator\ApiTokenAuthenticator" >
+        </service>
+
+        <service id="Stock\UserBundle\Application\Service\Manager\AuthTokenManager" 
+            class="Stock\UserBundle\Application\Service\Manager\AuthTokenManager" />
+
+        <!-- Alias the AuthTokenManagerInterface to the AuthTokenManager implementation -->
+        <service id="Stock\UserBundle\Application\Service\Manager\AuthTokenManagerInterface"
+                 alias="Stock\UserBundle\Application\Service\Manager\AuthTokenManager" />
+
+        <service id="Stock\UserBundle\UI\Controller\PostUserAuthTokenController">
+            <tag name="controller.service_arguments" />
+             <argument type="service" 
+             id="Stock\UserBundle\Application\Service\Manager\AuthTokenManagerInterface" />
+        </service>
+
+
+        <service id="Stock\UserBundle\UI\Controller\PostAddNewUserController">
+            <tag name="controller.service_arguments" />
+
+        </service>
+
+                <!-- Register the UserRepository service -->
+        <service id="Stock\UserBundle\Domain\Repository\UserRepository"
+                 class="Stock\UserBundle\Domain\Repository\UserRepository">
+            <tag name="doctrine.repository_service" />
+            <argument type="service" id="doctrine" />
+        </service>
+
+        
+    </services>
+    
+</container>
