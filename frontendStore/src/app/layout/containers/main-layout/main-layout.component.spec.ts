@@ -11,7 +11,7 @@ describe('MainLayoutComponent', () => {
       declarations: [MainLayoutComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(MainLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -3,31 +3,41 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { NgComponentOutlet } from '@angular/common';
 
 import { StoreModule } from './modules/store/store.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
-
+import { DemoMaterialModule } from './shared/material-module';
+import { VediosComponent } from './pages/vedios.component';
+import { TestComponent } from './layout/components/header/test/test.component';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
+    VediosComponent,
+    TestComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule,
     StoreModule,
-    BrowserAnimationsModule,
-   
+    AppRoutingModule,
+    DemoMaterialModule,
+    NgComponentOutlet,
+    CdkDropList, CdkDrag,
     
+
+
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient(),
+
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  constructor(){
-    console.log("hello app");
-  }
-}
+export class AppModule { }

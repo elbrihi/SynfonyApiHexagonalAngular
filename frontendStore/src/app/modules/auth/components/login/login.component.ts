@@ -1,27 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AuthService } from '../../../../core/services/authservice/auth.service';
 import { Credentials } from '../../../../core/services/user/credentials.model';
+import { Authservice } from '../../../../core/services/authservice/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  standalone: false,
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
+
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
     
   });
   private formSubmitAttempt?: boolean;
-
-  constructor(
-   // private fb: FormBuilder,
-    private authService: AuthService
-
+      
+  constructor(){
     
-  ) {}
+
+  }
+
+
+  authService = inject(Authservice);
 
   ngOnInit() {
     console.log(this.form);
@@ -41,4 +46,5 @@ export class LoginComponent implements OnInit {
     }
     this.formSubmitAttempt = true;
   }
+
 }

@@ -1,61 +1,84 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
-import { Menu } from '../../../core/models/layout/menu.model';
-import { MatDrawer } from '@angular/material/sidenav';
+import { Component, computed, signal } from '@angular/core';
+import { LayoutService } from '../../../core/services/mainLayout/layout.service.service';
 
 @Component({
   selector: 'app-main-layout',
-  templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.css'
+  standalone: false,
+  
+  template:`
+
+      <!--- app menu --->
+      <mat-sidenav-container>                          
+        <mat-sidenav 
+          [mode]="sidenavMode()"
+          [opened]="isSidenavOpen()"
+          [style.width]="sidenavWidth()"
+        >
+         
+            <app-custom-sidenav 
+                [collapsed]="this.layoutService.collapsed()"
+            >
+            </app-custom-sidenav>
+        </mat-sidenav>
+        <mat-sidenav-content class="content" 
+        [style.margin-left]="sidenavMargin()">
+          <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+  `,
+  styles: `
+
+      mat-sidenav-container {
+        height: calc(100vh - 64px);
+      }
+      mat-sidenav-container{
+      }
+      mat-sidenav{
+      }
+      mat-sidenav-content{
+      }
+      mat-sidenav,
+      mat-sidenav-content{
+        transition: all 500ms ease-in-out;
+  
+      }
+      app-custom-sidenav{
+      }
+      .content {
+        padding: 24px;
+        
+      }
+  
+      @media (max-width: 768px) {
+        mat-sidenav-container {
+          
+          height: 100vh;
+        }
+        mat-sidenav {
+          position: absolute;
+          z-index: 6;
+        }
+        .content {
+          margin-left: 0;
+        }
+      }
+  
+      @media (min-width: 769px) and (max-width: 1024px) {
+        mat-sidenav {
+          width: 200px;
+        }
+      }
+  `
 })
 export class MainLayoutComponent {
-  opened = true;
-
-  toggle(): void {
-    this.opened = !this.opened;
-  }
   
-  @ViewChild(MatDrawer) drawer!: MatDrawer;
+  constructor(public layoutService: LayoutService) {}
+  sidenavMode = () => window.innerWidth <= 768 ? 'over' : 'side';
+  sidenavWidth = computed(() => this.layoutService.collapsed() ? '65px' : '250px' );
 
-  isMobile = false;
+  isSidenavOpen = () => (window.innerWidth > 768 || !this.layoutService.collapsed());
+  sidenavMargin = () => (window.innerWidth > 768 ? this.sidenavWidth() : '0');
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: UIEvent) { // Specify the event type
-    this.isMobile = window.innerWidth <= 768;
-  }
 
-  ngOnInit() {
-    this.isMobile = window.innerWidth <= 768;
-  }
-  // Parent Components 
 
-  parentMessage = 'Message from Parent Component';
-  menu: Menu = [
-    {
-      title: 'Home',
-      icon: 'home',
-      link: '/home',
-      color: '#ff7f0e',
-      subMenu:[]
-    
-    },
-    {
-      title: 'Statistics',
-      icon: 'bar_chart',
-      color: '#ff7f0e',
-      subMenu: [
-        {
-          title: 'Sales',
-          icon: 'money',
-          link: '/sales',
-          color: '#ff7f0e',
-        },
-        {
-          title: 'Customers',
-          icon: 'people',
-          color: '#ff7f0e',
-          link: '/customers',
-        },
-      ],
-    },
-  ];
 }

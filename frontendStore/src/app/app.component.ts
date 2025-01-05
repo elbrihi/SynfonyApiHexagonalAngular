@@ -1,12 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
+import { Router } from '@angular/router';
+/**toggle() */
+/**collapsed.set(!collapsed()) **/
 @Component({
   selector: 'app-root',
+  template:`
 
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    <router-outlet></router-outlet>
+  `,
+  standalone: false,
+  styles: [`
+
+`]
 })
-export class AppComponent {
-  title = 'frontendStore';
+export class AppComponent  {
+ 
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    console.log('Current URL:', this.router.url);
+    console.log('Router State:', this.router.routerState);
+  }
 }

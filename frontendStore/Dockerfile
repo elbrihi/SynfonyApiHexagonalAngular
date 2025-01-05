@@ -8,7 +8,10 @@ WORKDIR ${WORK_DIR}
 COPY package.json ${WORK_DIR}
 COPY package-lock.json ${WORK_DIR}
 
-RUN npm install -g @angular/core@16.2.4 @angular/cli@16.2.4 --force
+# Install Angular CLI globally
+RUN npm install -g @angular/cli@19.0.6 --force
+
+# Install project dependencies
 RUN npm install
 
 COPY . ${WORK_DIR}
