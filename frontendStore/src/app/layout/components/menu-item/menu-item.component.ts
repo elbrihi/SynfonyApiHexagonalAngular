@@ -17,11 +17,10 @@ import { MenuItem } from '../custom-sidenav/custom-sidenav.component';
             [activated]="rla.isActive"
             
         >
-<!-- ngIf -->
 
             <mat-icon 
                 [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlines'" matListItemIcon>
-                {{ item().label }}
+                {{ item().icon }}
             </mat-icon>
            
             @if (!collapsed())

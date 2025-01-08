@@ -135,6 +135,8 @@ html {
   --sys-surface-container: rgb(237 237 244);
   --sys-surface-container-high: rgb(231 232 238);
   --sys-surface-container-highest: rgb(226 226 233);
+  --scrollable-bg: var(--sys-surface);
+  --scrollable-border: var(--sys-outline);
 }
 
 .dark {
@@ -188,3 +190,4 @@ html {
   --sys-surface-container-high: rgb(40 42 47);
   --sys-surface-container-highest: rgb(51 53 58);
 }
+

@@ -85,6 +85,23 @@ export class CustomSidenavComponent {
        label: 'Dashboard',
        route: 'dashboard'
       },
+      { icon: 'supplier',
+        label: 'Fournisseurs',
+        route: 'supplier',
+        subItems:    [ 
+         { icon: 'add',
+           label: 'Liste des Fournissuers',
+           route: 'supplier',
+         },
+         { icon: 'analytics',
+           label: 'Analytics',
+           route: 'analytics'
+         },
+         { icon: 'vedios',
+           label: 'Vedios',
+           route: 'vedios'
+         }]
+      },
       { icon: 'content',
         label: 'Content',
         route: 'content',

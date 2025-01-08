@@ -30,6 +30,7 @@ import { StoreComponent } from "./store.component";
 import { LoginComponent } from "../auth/components/login/login.component";
 import { LogoutComponent } from "../auth/components/logout/logout.component";
 import { MainLayoutComponent } from "../../layout/containers/main-layout/main-layout.component";
+import { SupplierListComponent } from "../supplier/components/supplier-list/supplier-list.component";
 
 
 @NgModule({
@@ -53,7 +54,9 @@ import { MainLayoutComponent } from "../../layout/containers/main-layout/main-la
         WidgetsPanelComponent,
         DashboardHeaderComponent,
         MenuItemComponent,
-        VideoComponent
+        VideoComponent,
+        
+        SupplierListComponent
     ],
     imports:[
         RouterModule,
@@ -88,7 +91,9 @@ import { MainLayoutComponent } from "../../layout/containers/main-layout/main-la
         WidgetsPanelComponent,
         DashboardHeaderComponent,
         MenuItemComponent,
-        VideoComponent
+        VideoComponent,
+        SupplierListComponent
+
     ],
 
 })

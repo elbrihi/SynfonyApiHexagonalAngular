@@ -55,6 +55,8 @@ use function PHPSTORM_META\map;
         ),
         new GetCollection(
             uriTemplate: '/get/suppliers/by/paginations',
+            normalizationContext: ['groups' => ['supplier:read']],
+            denormalizationContext: ['groups' => ['supplier:write']],
             paginationClientItemsPerPage: true,
             paginationItemsPerPage: true,
         ),

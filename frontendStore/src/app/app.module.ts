@@ -12,6 +12,9 @@ import { DemoMaterialModule } from './shared/material-module';
 import { VediosComponent } from './pages/vedios.component';
 import { TestComponent } from './layout/components/header/test/test.component';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
     AppRoutingModule,
     DemoMaterialModule,
     NgComponentOutlet,
-    CdkDropList, CdkDrag,
+    CdkDropList, CdkDrag, MatTableModule, MatPaginatorModule, MatSortModule,
     
 
 

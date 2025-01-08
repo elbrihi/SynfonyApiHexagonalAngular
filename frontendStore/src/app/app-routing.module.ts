@@ -9,6 +9,7 @@ import { AnalyticsComponent } from './pages/analytics/analytics.component';
 import { ContentComponent } from './pages/content/content.component';
 import { StoreComponent } from './modules/store/store.component';
 import { AuthGuardService } from './core/guards/auth.guard.service';
+import { SupplierListComponent } from './modules/supplier/components/supplier-list/supplier-list.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,20 @@ const routes: Routes = [
         children: [
           {
             path: 'vedios', // Correct spelling
+            component: VediosComponent // Ensure the component name matches
+          },
+          {
+            path: 'analytics',
+            component: AnalyticsComponent
+          }
+        ]
+      },
+      {
+        path: 'supplier',
+        component: SupplierListComponent,
+        children: [
+          {
+            path: 'supplier', // Correct spelling
             component: VediosComponent // Ensure the component name matches
           },
           {
