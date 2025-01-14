@@ -6,6 +6,8 @@ import { SupplierListDataSource, SupplierListItem } from './supplier-list-dataso
 import { SupplierDataSource } from '../../services/supplier.data.source.service';
 import { Supplier } from '../../models/supplier';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
+import { MatDialog } from '@angular/material/dialog';
+import { AddDialogComponent } from '../../dialogs/add/add.dialog/add-dialog.component';
 
 @Component({
   selector: 'app-supplier-list',
@@ -35,6 +37,8 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
   listSupplier = new MatTableDataSource<any>();
 
   constructor(private scrollDispatcher: ScrollDispatcher) {}
+
+  readonly dialog = inject(MatDialog);
   supplierDataSource = inject(SupplierDataSource);
 
   ngOnInit(): void {
@@ -117,10 +121,25 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
     }
   }
 
-  openAddDialog(){}
+  openAddDialog(){
+
+
+    const dialogRef = this.dialog.open(AddDialogComponent, {
+        
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        if (result !== undefined) {
+         
+        }
+      });
+  }
 
   startEdit(id: number){}
 
   deleteItem(id: number)
   {}
+
+  viewDetails(id: number){}
 }

@@ -54,9 +54,9 @@ import { SupplierListComponent } from "../supplier/components/supplier-list/supp
         WidgetsPanelComponent,
         DashboardHeaderComponent,
         MenuItemComponent,
-        VideoComponent,
-        
-        SupplierListComponent
+        VideoComponent,   
+        SupplierListComponent,
+
     ],
     imports:[
         RouterModule,

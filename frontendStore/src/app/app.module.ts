@@ -15,12 +15,14 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { AddDialogComponent } from './modules/supplier/dialogs/add/add.dialog/add-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VediosComponent,
     TestComponent,
+    AddDialogComponent,
 
 
   ],

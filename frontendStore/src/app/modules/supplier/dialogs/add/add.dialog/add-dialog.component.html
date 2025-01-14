@@ -1,0 +1,48 @@
+<div class="supplier-container mat-elevation-z4">
+  <h2 class="supplier-title">Supplier Information</h2>
+  <form class="supplier-form">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Supplier Name</mat-label>
+      <input matInput formControlName="supplierName" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Unique Identifier</mat-label>
+      <input matInput formControlName="uniqueIdentifer" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Adresse</mat-label>
+      <input matInput formControlName="adresse" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Main Contact</mat-label>
+      <input matInput formControlName="mainContact" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" type="tel" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Supplier Type</mat-label>
+      <mat-select formControlName="supplierType">
+        <mat-option value="local">Local</mat-option>
+        <mat-option value="international">International</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Payment Methods</mat-label>
+      <input matInput formControlName="paymentMethods" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Payment Terms</mat-label>
+      <input matInput formControlName="paymentTerms" />
+    </mat-form-field>
+    <div class="form-actions">
+      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="warn">Cancel</button>
+    </div>
+  </form>
+</div>
