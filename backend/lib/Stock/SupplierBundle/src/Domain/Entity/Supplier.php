@@ -143,6 +143,8 @@ class Supplier
     public function __construct()
     {
         $this->product = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
 
@@ -266,7 +268,7 @@ class Supplier
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt= null): static
     {
         $this->createdAt = $createdAt;
 
@@ -278,7 +280,7 @@ class Supplier
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt = null): static
     {
         $this->updatedAt = $updatedAt;
 

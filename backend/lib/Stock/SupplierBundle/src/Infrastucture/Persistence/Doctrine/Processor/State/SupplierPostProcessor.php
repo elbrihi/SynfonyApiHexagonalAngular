@@ -29,10 +29,10 @@ class SupplierPostProcessor implements ProcessorInterface
         
 
         $data->setUser($this->security->getUser());
-
-        
-      
-        // dd($this->validator);
+        // Set the timestamps
+        $data->setCreatedAt(new \DateTimeImmutable());
+        $data->setUpdatedAt(new \DateTimeImmutable());
+       
         return $this->persistProcessor->process($data, $operation, $uriVariables, $context);
     }
 }

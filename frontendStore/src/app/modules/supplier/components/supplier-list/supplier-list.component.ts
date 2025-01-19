@@ -125,15 +125,15 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
 
 
     const dialogRef = this.dialog.open(AddDialogComponent, {
-        
+      width: '600px',
       });
   
-      dialogRef.afterClosed().subscribe(result => {
+      /*dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         if (result !== undefined) {
          
         }
-      });
+      });*/
   }
 
   startEdit(id: number){}
