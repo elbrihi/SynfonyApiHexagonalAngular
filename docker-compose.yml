@@ -29,7 +29,18 @@ services:
             - db
         #links: 
             #- db:db
-
+            
+    behat:
+        image: php:8.1-cli
+        working_dir: /var/www/app
+        volumes:
+            - ${APP_PATH}:/var/www/app
+        depends_on:
+            - db
+        command: >
+            sh -c "composer require --dev behat/behat &&
+                   vendor/bin/behat --init &&
+                   tail -f /dev/null"
     nginx:
         build: docker/nginx
         ports:

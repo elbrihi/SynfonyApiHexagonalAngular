@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { SupplierListComponent } from '../../../components/supplier-list/supplier-list.component';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Supplier } from '../../../models/supplier';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SupplierDataSource } from '../../../services/supplier.data.source.service';
@@ -16,7 +16,11 @@ export class AddDialogComponent {
 
   supplierForm: FormGroup;
 
-  constructor(private fb: FormBuilder){
+  constructor(
+      private fb: FormBuilder,
+    
+    
+      ){
       this.supplierForm = this.fb.group({
         supplierName: ['', Validators.required],
         uniqueIdentifer: [''],
@@ -28,7 +32,9 @@ export class AddDialogComponent {
         paymentMethods: [''],
         paymentTerms: ['']
     }); 
+
   }
+  
 
 
   readonly dialogRef = inject(MatDialogRef<SupplierListComponent>);

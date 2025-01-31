@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -8,6 +8,15 @@ import { Supplier } from '../../models/supplier';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDialogComponent } from '../../dialogs/add/add.dialog/add-dialog.component';
+import { SupplierDetailsComponent } from '../../dialogs/details/supplier-details/supplier-details.component';
+import { SupplierUpdateComponent } from '../../dialogs/update/supplier.update/supplier.update.component';
+
+
+export interface DialogData {
+  id: number;
+  name: string;
+}
+
 
 @Component({
   selector: 'app-supplier-list',
@@ -21,6 +30,8 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
   totalItems: number = 0;
   currentPage: number = 1;
   itemsPerPage: number = 5;
+  readonly id = signal(0);
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -125,21 +136,54 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
 
 
     const dialogRef = this.dialog.open(AddDialogComponent, {
+   
       width: '600px',
       });
   
-      /*dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         if (result !== undefined) {
          
         }
-      });*/
+      });
   }
 
-  startEdit(id: number){}
+  startEdit(id: number)
+  {
+    const dialogRef = this.dialog.open(SupplierUpdateComponent,{
+      
+      data: {
+        id: id
+      } as Supplier
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.loadSuppliers();
+      if (result !== undefined) {
+       
+      }
+    });
+  }
 
-  deleteItem(id: number)
-  {}
+  deleteItem(id: number){}
 
-  viewDetails(id: number){}
+  viewDetails(id: number){
+
+    const dialogRef = this.dialog.open(SupplierDetailsComponent, {
+      width: '1000px',
+      data: {
+        id: id,
+
+      } as Supplier
+      
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+       
+        if (result !== undefined) {
+         
+        }
+      });
+  }
 }

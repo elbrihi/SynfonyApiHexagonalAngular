@@ -88,7 +88,7 @@ class Supplier
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Address cannot be empty.")]
     #[Groups(['supplier:read', 'supplier:write','product:read', 'product:write'])]
-    private ?string $adresse = null;
+    private ?string $adress = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Main contact is required.")]
@@ -179,14 +179,14 @@ class Supplier
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getAdress(): ?string
     {
-        return $this->adresse;
+        return $this->adress;
     }
 
-    public function setAdresse(string $adresse): static
+    public function setAdress(string $adress): static
     {
-        $this->adresse = $adresse;
+        $this->adress = $adress;
 
         return $this;
     }

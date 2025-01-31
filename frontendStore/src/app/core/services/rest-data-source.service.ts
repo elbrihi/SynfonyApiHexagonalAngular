@@ -21,7 +21,7 @@ export class RestDataSource {
       'My-Custom-Header': 'foobar',
     });
   }
-  protected get<T>(endpoint: string, params?: HttpParams): Observable<T> {
+  protected get<T>(endpoint: number, params?: HttpParams): Observable<T> {
     return this.http.get<T>(`${this.baseUrl}${endpoint}`, { headers: this.headers, params });
   }
 

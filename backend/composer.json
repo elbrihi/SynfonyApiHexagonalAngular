@@ -87,6 +87,7 @@
         }
     },
     "require-dev": {
+        "behat/behat": "*",
         "dama/doctrine-test-bundle": "^8.2",
         "doctrine/doctrine-fixtures-bundle": "^3.6",
         "justinrainbow/json-schema": "^6.0",

@@ -16,7 +16,8 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'store' // Default redirect to 'store'
+    redirectTo: 'store', // Default redirect to 'store'
+    
   },
   { 
     path: 'login', 

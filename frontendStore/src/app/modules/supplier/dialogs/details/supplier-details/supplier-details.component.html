@@ -1,0 +1,25 @@
+<div *ngIf="isLoading(); else detailsContent" class="loading-indicator">
+  <mat-spinner></mat-spinner>
+</div>
+
+
+
+<ng-template #detailsContent>
+  <div class="details-container">
+    <h2>Supplier Details</h2>
+    <mat-card>
+      <mat-card-title>{{ supplierDetails()?.supplierName }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>Address:</strong> Qdress</p>
+        <p><strong>Email:</strong> {{ supplierDetails()?.email }}</p>
+        <p><strong>Phone:</strong> {{ supplierDetails()?.phoneNumber }}</p>
+        <p><strong>Type:</strong> {{ supplierDetails()?.supplierType }}</p>
+        <p><strong>Payment Terms:</strong> {{ supplierDetails()?.paymentTerms }}</p>
+        <p><strong>Contact Person:</strong> {{ supplierDetails()?.mainContact }}</p>
+      </mat-card-content>
+    </mat-card>
+    <div class="dialog-actions">
+      <button mat-button (click)="closeDialog()">Close</button>
+    </div>
+  </div>
+</ng-template>

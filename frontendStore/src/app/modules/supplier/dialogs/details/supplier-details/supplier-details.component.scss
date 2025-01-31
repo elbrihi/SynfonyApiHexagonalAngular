@@ -1,0 +1,67 @@
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+}
+
+.details-container {
+  padding: 16px;
+  background-color: var(--sys-surface);
+  color: var(--sys-on-surface);
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px var(--sys-shadow);
+}
+
+.details-container h2 {
+  font-size: 1.8rem;
+  color: var(--sys-primary);
+  margin-bottom: 16px;
+}
+
+mat-card {
+  margin: 16px 0;
+  background-color: var(--sys-surface-container-high);
+  color: var(--sys-on-surface);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--sys-shadow);
+}
+
+mat-card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--sys-primary);
+}
+
+mat-card-content p {
+  font-size: 1rem;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+mat-card-content p strong {
+  color: var(--sys-on-surface-variant);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.dialog-actions button {
+  color: var(--sys-on-secondary);
+  background-color: var(--sys-secondary);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialog-actions button:hover {
+  background-color: var(--sys-secondary-container);
+}

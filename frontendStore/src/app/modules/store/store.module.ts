@@ -31,6 +31,8 @@ import { LoginComponent } from "../auth/components/login/login.component";
 import { LogoutComponent } from "../auth/components/logout/logout.component";
 import { MainLayoutComponent } from "../../layout/containers/main-layout/main-layout.component";
 import { SupplierListComponent } from "../supplier/components/supplier-list/supplier-list.component";
+import { SupplierDetailsComponent } from "../supplier/dialogs/details/supplier-details/supplier-details.component";
+import { SupplierUpdateComponent } from "../supplier/dialogs/update/supplier.update/supplier.update.component";
 
 
 @NgModule({
@@ -56,6 +58,8 @@ import { SupplierListComponent } from "../supplier/components/supplier-list/supp
         MenuItemComponent,
         VideoComponent,   
         SupplierListComponent,
+        SupplierDetailsComponent,
+        SupplierUpdateComponent
 
     ],
     imports:[
@@ -92,7 +96,9 @@ import { SupplierListComponent } from "../supplier/components/supplier-list/supp
         DashboardHeaderComponent,
         MenuItemComponent,
         VideoComponent,
-        SupplierListComponent
+        SupplierListComponent,
+        SupplierDetailsComponent,
+        SupplierUpdateComponent
 
     ],
 

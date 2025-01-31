@@ -4,7 +4,7 @@ export interface Supplier {
     id?: number;
     supplierName?: string;
     uniqueIdentifer?: string;
-    adresse?: string;
+    adress?: string;
     mainContact?: string;
     email?: string;  
     phoneNumber?: boolean;

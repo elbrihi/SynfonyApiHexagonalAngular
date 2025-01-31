@@ -26,7 +26,6 @@ final readonly class SupplierPutProcessor implements ProcessorInterface
     public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = []): Supplier
     {
         
-       
 
         $data->setUser($this->security->getUser());
 
