@@ -33,6 +33,7 @@ import { MainLayoutComponent } from "../../layout/containers/main-layout/main-la
 import { SupplierListComponent } from "../supplier/components/supplier-list/supplier-list.component";
 import { SupplierDetailsComponent } from "../supplier/dialogs/details/supplier-details/supplier-details.component";
 import { SupplierUpdateComponent } from "../supplier/dialogs/update/supplier.update/supplier.update.component";
+import { CategoryListComponent } from "../product/components/category-list/category-list.component";
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { SupplierUpdateComponent } from "../supplier/dialogs/update/supplier.upd
         VideoComponent,   
         SupplierListComponent,
         SupplierDetailsComponent,
-        SupplierUpdateComponent
+        SupplierUpdateComponent,
+        CategoryListComponent
 
     ],
     imports:[
@@ -98,7 +100,8 @@ import { SupplierUpdateComponent } from "../supplier/dialogs/update/supplier.upd
         VideoComponent,
         SupplierListComponent,
         SupplierDetailsComponent,
-        SupplierUpdateComponent
+        SupplierUpdateComponent,
+        CategoryListComponent
 
     ],
 

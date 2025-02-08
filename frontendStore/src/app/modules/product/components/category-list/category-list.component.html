@@ -1,0 +1,73 @@
+<div  class="theme-container">
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Filter issues">
+    </mat-form-field>
+  </div>
+  
+  <div class="scrollable" cdkScrollable>
+    <div class="mat-elevation-z2">
+
+      <table mat-table class="full-width-table"[dataSource]="listCategories" matSort aria-label="Suppliers" >
+        <!-- ID Column -->
+         
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="categoryName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>les nom des categories
+          <td mat-cell *matCellDef="let row">{{ row.categoryName }}</td>
+        </ng-container>
+  
+  
+
+  
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button color="primary" >
+              <mat-icon aria-label="Add new supplier">add</mat-icon>
+            </button>
+          </th>
+          <td mat-cell *matCellDef="let row">
+              <!-- View Details Button -->
+            <button mat-icon-button color="primary" >
+              <mat-icon aria-label="View Details">visibility</mat-icon>
+            </button>
+
+            <button mat-icon-button color="accent">
+              <mat-icon aria-label="Edit supplier">edit</mat-icon>
+            </button>
+            
+            <button mat-icon-button color="warn" >
+              <mat-icon aria-label="Delete supplier">delete</mat-icon>
+            </button>
+
+          </td>
+        </ng-container>
+        
+
+
+        <!-- Table Header and Body -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+
+      <!-- Pagination Controls -->
+      <mat-paginator class="paginator"
+        #paginator 
+
+        [pageSizeOptions]="[1, 5, 10, 20]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+
+</div>
+
+

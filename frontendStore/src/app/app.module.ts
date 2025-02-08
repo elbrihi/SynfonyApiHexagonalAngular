@@ -17,7 +17,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { AddDialogComponent } from './modules/supplier/dialogs/add/add.dialog/add-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SupplierDetailsComponent } from './modules/supplier/dialogs/details/supplier-details/supplier-details.component';
 
 
 @NgModule({
@@ -26,9 +25,6 @@ import { SupplierDetailsComponent } from './modules/supplier/dialogs/details/sup
     VediosComponent,
     TestComponent,
     AddDialogComponent,
-
-    
-
 
   ],
   imports: [

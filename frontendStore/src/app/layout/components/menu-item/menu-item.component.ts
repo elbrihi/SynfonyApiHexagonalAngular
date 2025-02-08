@@ -57,7 +57,7 @@ import { MenuItem } from '../custom-sidenav/custom-sidenav.component';
 
             <mat-icon [fontSet]="rla.isActive ?
              'material-icons' : 'material-icons-outlines'" 
-             matListItemIcon>{{ subItem.label }}</mat-icon>
+             matListItemIcon>{{ subItem.icon}}</mat-icon>
            
             @if (!collapsed())
             {

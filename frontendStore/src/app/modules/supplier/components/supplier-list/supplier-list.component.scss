@@ -1,4 +1,37 @@
 
+.theme-container {
+
+  &.light {
+    --paginator-bg: var(--sys-surface);
+    --paginator-text: var(--sys-on-surface);
+    --paginator-hover-bg: var(--sys-surface-container-high);
+    --paginator-border: var(--sys-outline);
+  }
+
+  &.dark {
+    --paginator-bg: var(--sys-surface-dim);
+    --paginator-text: var(--sys-on-surface);
+    --paginator-hover-bg: var(--sys-surface-container);
+    --paginator-border: var(--sys-outline);
+  }
+
+  mat-paginator {
+      background-color: var(--paginator-bg);
+      color: var(--paginator-text);
+      border: 1px solid var(--paginator-border);
+
+      .mat-paginator-navigation-next,
+      .mat-paginator-navigation-previous {
+        color: var(--paginator-text);
+      }
+
+      mat-option:hover {
+        background-color: var(--paginator-hover-bg);
+    }
+  }
+  
+}
+
 .full-width-table {
   max-width: 100%; /* Allow horizontal scroll */
   max-height: 400px; /* Allow vertical scroll */
@@ -42,7 +75,7 @@ td:hover {
 
 
 :host {
-display: block;
+  display: block;
 }
 
 .form {
@@ -56,37 +89,6 @@ display: block;
   max-width: 300px;
 }
 
-
-.theme-container {
-&.light {
-  --paginator-bg: var(--sys-surface);
-  --paginator-text: var(--sys-on-surface);
-  --paginator-hover-bg: var(--sys-surface-container-high);
-  --paginator-border: var(--sys-outline);
-}
-
-&.dark {
-  --paginator-bg: var(--sys-surface-dim);
-  --paginator-text: var(--sys-on-surface);
-  --paginator-hover-bg: var(--sys-surface-container);
-  --paginator-border: var(--sys-outline);
-}
-
-mat-paginator {
-    background-color: var(--paginator-bg);
-    color: var(--paginator-text);
-    border: 1px solid var(--paginator-border);
-
-    .mat-paginator-navigation-next,
-    .mat-paginator-navigation-previous {
-      color: var(--paginator-text);
-    }
-
-    mat-option:hover {
-      background-color: var(--paginator-hover-bg);
-    }
-  }
-}
 
 
 .scrollable {

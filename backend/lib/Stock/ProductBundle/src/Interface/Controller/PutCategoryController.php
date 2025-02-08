@@ -27,7 +27,8 @@ final class PutCategoryController extends AbstractController
     {
    
         $data = json_decode($request->getContent(), true);
-        
+        $data->setCreatedAt(new \DateTimeImmutable());
+        $data->setUpdatedAt(new \DateTimeImmutable());
         return $this->categoryManager->updateCategory($category, $this->getUser(), $data);
    
     }

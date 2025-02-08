@@ -10,6 +10,7 @@ import { ContentComponent } from './pages/content/content.component';
 import { StoreComponent } from './modules/store/store.component';
 import { AuthGuardService } from './core/guards/auth.guard.service';
 import { SupplierListComponent } from './modules/supplier/components/supplier-list/supplier-list.component';
+import { CategoryListComponent } from './modules/product/components/category-list/category-list.component';
 
 
 const routes: Routes = [
@@ -61,6 +62,20 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'category',
+        component: CategoryListComponent,
+        children: [
+          {
+            path: 'category', // Correct spelling
+            component: CategoryListComponent // Ensure the component name matches
+          },
+          {
+            path: 'analytics',
+            component: AnalyticsComponent
+          }
+        ]
+      },
+      {
         path: 'comments',
         component: CommentsComponent
       }
@@ -80,50 +95,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-
-
-
-/*const routes: Routes = [
-  { 
-    path: 'login', 
-    component: LoginComponent 
-  },
-  { 
-    path: 'logout', 
-    component: LogoutComponent 
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'dashboard'
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'content',
-    component: ContentComponent,
-    children: [
-      {
-        path: 'analytics',
-        component: AnalyticsComponent
-      },
-      {
-        path: 'videos',
-        component: VediosComponent
-      }
-    ]
-  },
-  {
-    path: 'comments',
-    component: CommentsComponent
-  },
-  // Wildcard route for a 404 page or fallback
-  { 
-    path: '**', 
-    redirectTo: 'dashboard' 
-  }
-];
-*/

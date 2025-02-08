@@ -2,7 +2,6 @@ import { AfterViewInit, Component, inject, OnInit, signal, ViewChild } from '@an
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { SupplierListDataSource, SupplierListItem } from './supplier-list-datasource';
 import { SupplierDataSource } from '../../services/supplier.data.source.service';
 import { Supplier } from '../../models/supplier';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
@@ -67,7 +66,7 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
           ? this.currentPage * this.itemsPerPage
           : this.suppliers.length; // Handle total count dynamically or add API metadata parsing
       },
-      error: (err) => console.error('Error fetching suppliers:', err)
+                
     });
   }
 

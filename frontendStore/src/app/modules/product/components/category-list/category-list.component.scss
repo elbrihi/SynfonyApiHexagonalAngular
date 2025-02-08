@@ -1,0 +1,114 @@
+
+.theme-container {
+
+  &.light {
+    --paginator-bg: var(--sys-surface);
+    --paginator-text: var(--sys-on-surface);
+    --paginator-hover-bg: var(--sys-surface-container-high);
+    --paginator-border: var(--sys-outline);
+  }
+
+  &.dark {
+    --paginator-bg: var(--sys-surface-dim);
+    --paginator-text: var(--sys-on-surface);
+    --paginator-hover-bg: var(--sys-surface-container);
+    --paginator-border: var(--sys-outline);
+  }
+
+  mat-paginator {
+      background-color: var(--paginator-bg);
+      color: var(--paginator-text);
+      border: 1px solid var(--paginator-border);
+
+      .mat-paginator-navigation-next,
+      .mat-paginator-navigation-previous {
+        color: var(--paginator-text);
+      }
+
+      mat-option:hover {
+        background-color: var(--paginator-hover-bg);
+    }
+  }
+}
+
+.full-width-table {
+  max-width: 100%; /* Allow horizontal scroll */
+  max-height: 400px; /* Allow vertical scroll */
+  overflow: auto; /* Enable scrolling */
+  table-layout: fixed;
+  background-color: var(--sys-surface);
+  color: var(--sys-on-surface);
+  border-collapse: collapse;
+}
+
+th, td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 150px;
+}
+
+th {
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tr:hover {
+  background-color: var(--sys-surface-container);
+}
+
+
+td {
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+}
+
+td:hover {
+  background-color: var(--sys-surface-container-highest);
+}
+
+
+
+:host {
+display: block;
+}
+
+.form {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: start;
+}
+
+.form mat-form-field {
+  width: 100%;
+  max-width: 300px;
+}
+
+
+
+.scrollable {
+  background-color: var(--scrollable-bg);
+  border: 1px solid var(--scrollable-border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow: auto;
+  max-height: 80vh; /* Adjust to your needs */
+  scrollbar-color: var(--sys-outline) var(--scrollable-bg);
+  scrollbar-width: thin;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--sys-outline);
+  border-radius: 4px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background-color: var(--scrollable-bg);
+}

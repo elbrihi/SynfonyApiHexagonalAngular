@@ -80,55 +80,78 @@ export class CustomSidenavComponent {
 
     
     menuItems = signal<MenuItem[]>([
-     { 
-       icon: 'dashboard',
-       label: 'Dashboard',
-       route: 'dashboard'
+      { 
+        icon: 'dashboard',
+        label: 'Dashboard',
+        route: 'dashboard'
       },
-      { icon: 'supplier',
+      { 
+        icon: 'dashboard', 
         label: 'Fournisseurs',
         route: 'supplier',
-        subItems:    [ 
-         { icon: 'add',
-           label: 'Liste des Fournissuers',
-           route: 'supplier',
-         },
-         { icon: 'analytics',
-           label: 'Analytics',
-           route: 'analytics'
-         },
-         { icon: 'vedios',
-           label: 'Vedios',
-           route: 'vedios'
-         }]
+        subItems: [ 
+          { 
+            icon: 'dashboard',
+            label: 'Liste des Fournisseurs',
+            route: 'supplier',
+          },
+          { 
+            icon: 'dashboard',
+            label: 'Analytics',
+            route: 'analytics'
+          },
+          { 
+            icon: 'dashboard',
+            label: 'Vidéos',
+            route: 'videos'
+          }
+        ]
       },
-      { icon: 'content',
+      { 
+        icon: 'catalog', 
+        label: 'Produits',
+        route: 'category',
+        subItems: [ 
+          { 
+            icon: 'category',
+            label: 'Categories',
+            route: 'category',
+          }
+        ]
+      },
+      { 
+        icon: 'dashboard',
         label: 'Content',
         route: 'content',
-        subItems:    [ 
-         { icon: 'content',
-           label: 'Content',
-           route: 'content',
-         },
-         { icon: 'analytics',
-           label: 'Analytics',
-           route: 'analytics'
-         },
-         { icon: 'vedios',
-           label: 'Vedios',
-           route: 'vedios'
-         }]
+        subItems: [ 
+          { 
+            icon: 'dashboard',
+            label: 'Content',
+            route: 'content',
+          },
+          { 
+            icon: 'dashboard',
+            label: 'Analytics',
+            route: 'analytics'
+          },
+          { 
+            icon: 'dashboard',
+            label: 'Vidéos',
+            route: 'videos'
+          }
+        ]
       },
-      
-      { icon: 'analytics',
+      { 
+        icon: 'dashboard',
         label: 'Analytics',
         route: 'analytics'
       },
-      { icon: 'comments',
+      { 
+        icon: 'dashboard',
         label: 'Comments',
         route: 'comments'
       }
-    ])
+    ]);
 
 
     profilePicSize = computed(() => this.sideNavCallapsed() ? '32' : '100')
