@@ -17,6 +17,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { AddDialogComponent } from './modules/supplier/dialogs/add/add.dialog/add-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddCategoryComponent } from './modules/product/dialogs/add/add-category/add-category.component';
+import { UpdateCategoryComponent } from './modules/product/dialogs/update/update-category/update-category.component';
+import { DatatableTutoComponent } from './modules/product/components/datatable-tuto/datatable-tuto.component';
 
 
 @NgModule({
@@ -25,6 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     VediosComponent,
     TestComponent,
     AddDialogComponent,
+    AddCategoryComponent,
+    UpdateCategoryComponent,
 
   ],
   imports: [
@@ -36,9 +41,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     DemoMaterialModule,
     NgComponentOutlet,
     CdkDropList, CdkDrag, MatTableModule, MatPaginatorModule, MatSortModule,
-    
-
-
   ],
   providers: [
     provideAnimationsAsync(),

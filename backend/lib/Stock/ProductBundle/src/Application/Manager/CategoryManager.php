@@ -19,15 +19,19 @@ class CategoryManager implements CategoryManagerInterface
         
         $category->setCategoryName($category->getCategoryName(). " From Manager ");
 
-      // dd($category);
+       dd($category);
        return $category ;
     }
 
     public function updateCategory(Category $category, User $user, $data): Category
     {
+        //$data->setCreatedAt(new \DateTimeImmutable());
+    
 
+       // $data->setUpdatedAt(new \DateTimeImmutable());
         $category->setCategoryName($data["categoryName"]);
         $category->setCategoryStatus($data["categoryStatus"]);
+
         return  $category;
     }
 

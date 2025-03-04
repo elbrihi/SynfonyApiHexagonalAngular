@@ -1,0 +1,184 @@
+:root {
+  --scrollable-bg: #f0f0f0;
+  --scrollable-border: #ccc;
+}
+.theme-container {
+
+  &.light {
+    --paginator-bg: var(--sys-surface);
+    --paginator-text: var(--sys-on-surface);
+    --paginator-hover-bg: var(--sys-surface-container-high);
+    --paginator-border: var(--sys-outline);
+  }
+
+  &.dark {
+    --paginator-bg: var(--sys-surface-dim);
+    --paginator-text: var(--sys-on-surface);
+    --paginator-hover-bg: var(--sys-surface-container);
+    --paginator-border: var(--sys-outline);
+  }
+
+  mat-paginator {
+      background-color: var(--paginator-bg);
+      color: var(--paginator-text);
+      border: 1px solid var(--paginator-border);
+
+      .mat-paginator-navigation-next,
+      .mat-paginator-navigation-previous {
+        color: var(--paginator-text);
+      }
+
+      mat-option:hover {
+        background-color: var(--paginator-hover-bg);
+    }
+  }
+}
+
+th, td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 150px;
+}
+
+/*th {
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}*/
+
+tr:hover {
+  background-color: var(--sys-surface-container);
+}
+
+
+td {
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+}
+
+td:hover {
+  background-color: var(--sys-surface-container-highest);
+}
+
+
+
+:host {
+display: block;
+}
+
+.form {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: start;
+}
+
+.form mat-form-field {
+  width: 100%;
+  max-width: 300px;
+}
+
+
+
+.scrollable {
+  background-color: var(--scrollable-bg, #f9f9f9); /* Fallback if variable is not defined */
+  border: 1px solid var(--scrollable-border, #ccc); /* Fallback border */
+  border-radius: 8px;
+  padding: 16px;
+  
+  /* Enable scrolling */
+  max-height: 80vh; /* Adjust based on your layout */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Custom scrollbar styles */
+  scrollbar-color: var(--sys-outline, #888) var(--scrollable-bg, #f9f9f9);
+  scrollbar-width: thin;
+}
+
+/* Scrollbar for WebKit browsers */
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--sys-outline, #888);
+  border-radius: 4px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background-color: var(--scrollable-bg, #f9f9f9);
+}
+
+/* Ensure child elements do not affect scrolling */
+.scrollable > * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.sub-table {
+  width: 100%;
+  margin-left: 40px; /* Indent sub-table */
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+}
+
+tr:hover {
+  background-color: var(--sys-surface-container-high);
+}
+
+
+/* Sub-table container */
+.sub-theme-container {
+  background-color: var(--sys-surface);
+  max-height: 80vh;
+  width: 100%;
+  border: 1px solid var(--sys-outline);
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Scrollable sub-table wrapper */
+.scrollableofSubTable {
+  width: 100%;
+  overflow: auto; /* Enables both vertical and horizontal scrolling when needed */
+}
+
+/* Table styles */
+.subTableProduct {
+  width: 100%;
+  table-layout: auto; /* Allows dynamic column resizing */
+  border-collapse: collapse;
+}
+
+/* Table headers and cells */
+.subTableProduct th,
+.subTableProduct td {
+  min-width: 150px; /* Ensures consistent column width */
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+

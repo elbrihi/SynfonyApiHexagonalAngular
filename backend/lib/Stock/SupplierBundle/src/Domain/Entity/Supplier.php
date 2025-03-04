@@ -70,13 +70,13 @@ class Supplier
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['supplier:read', 'supplier:write'])]
+    #[Groups(['category:read','category:write','supplier:read', 'supplier:write'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Supplier name cannot be empty.")]
     #[Assert\Length(max: 255, maxMessage: "Supplier name cannot exceed {{ limit }} characters.")]
-    #[Groups(['supplier:read', 'supplier:write','product:read', 'product:write'])]
+    #[Groups(['category:read','category:write','supplier:read', 'supplier:write','product:read', 'product:write'])]
     private ?string $supplierName = null;
 
     #[ORM\Column(length: 255)]

@@ -9,6 +9,7 @@
 
 // Container Styling
 .supplier-container {
+  display: flex; // Ensure flexbox works
   flex-direction: column;
   gap: 16px;
   background-color: var(--sys-surface-container);
@@ -41,7 +42,7 @@
   margin: 0;
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--sys-primary);
+  //color: var(--sys-primary);
   text-align: center;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--scrollable-border);
@@ -64,10 +65,10 @@
 .form-field {
   width: 100%;
   max-width: 400px;
+}
 
-  mat-form-field {
-    width: 100%;
-  }
+mat-form-field {
+  width: 100%;
 }
 
 // Form Actions Styling
@@ -81,19 +82,20 @@
     font-weight: bold;
 
     &:first-of-type {
-     
       color: var(--sys-on-surface);
+      //background-color: var(--sys-primary);
 
       &:hover {
+        //background-color: darken(var(--sys-primary), 10%);
       }
     }
 
     &:last-of-type {
       background-color: #d32f2f;
-      color: var(--sys-on-surface);
+       color: var(--sys-on-surface);
 
       &:hover {
-        
+       // background-color: darken(#d32f2f, 10%);
       }
     }
   }

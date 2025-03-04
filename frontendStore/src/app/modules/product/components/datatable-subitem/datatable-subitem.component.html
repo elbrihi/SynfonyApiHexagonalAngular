@@ -1,0 +1,92 @@
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+  
+
+
+  <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
+      <th mat-header-cell *matHeaderCellDef>{{column}}</th>
+      <td mat-cell *matCellDef="let element"> {{ element[column] }}  </td>
+  </ng-container>
+
+  <ng-container matColumnDef="detailsTest11">
+    <td mat-cell colspan="3" *matCellDef="let element" (click)="tab(element)" class="deteailsTest">
+
+      <table mat-table [dataSource]="getSubItemsDataSource(element)">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let sub" (click)="td(sub)">{{sub.id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name1">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let sub">{{sub.name1}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name2">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let sub">{{sub.name2}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name3">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let sub">{{sub.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name4">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let sub">{{sub.name4}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name5">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let sub">{{sub.name5}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name6">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let sub">{{sub.name6}}</td>
+        </ng-container>
+
+  
+
+        <tr mat-header-row *matHeaderRowDef="subItemColumns"></tr> 
+        <tr mat-row *matRowDef="let row; columns: subItemColumns;"></tr>
+
+      </table>
+    </td>
+
+  </ng-container >
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <tr mat-row *matRowDef="let row; columns : ['detailsTest11']"></tr>
+  <!-- Sub-items row -->
+
+</table>
+
+
+
+
+<!---
+  <tr *ngFor="let element of dataSource.data">
+    <td colspan="3">
+      <table *ngIf="element.expanded" mat-table [dataSource]="getSubItemsDataSource(element)" class="sub-table">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let subItem"> {{subItem.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let subItem"> {{subItem.name}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="subItemColumns"></tr>
+        <tr mat-row *matRowDef="let subItem; columns: subItemColumns;"></tr>
+      </table>
+    </td>
+  </tr>
+-->

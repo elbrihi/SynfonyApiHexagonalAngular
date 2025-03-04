@@ -1,0 +1,26 @@
+<div class="supplier-container mat-elevation-z4">
+  <h2 class="supplier-title">Add Categories</h2>
+
+  <form [formGroup]="categoryForm" (ngSubmit)="saveCategories($event)">
+    <div formArrayName="categories">
+      <div *ngFor="let category of categories.controls; let i = index" [formGroupName]="i" class="category-group">
+        
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Category Name</mat-label>
+          <input matInput formControlName="categoryName" />
+        </mat-form-field>
+
+        <mat-checkbox formControlName="categoryStatus">Active</mat-checkbox>
+
+        <button mat-icon-button color="warn" (click)="removeCategory(i)" *ngIf="categories.length > 1">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="button" (click)="addCategory()">+ Add Category</button>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+  </form>
+</div>

@@ -23,7 +23,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ApiResource(
-      security: "is_granted('ROLE_USER')",
+      security: "is_granted('ROLE_ADMIN')",
       operations: [
         new Post(
             security: "is_granted('ROLE_ADMIN')",
@@ -44,10 +44,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
             uriTemplate: '/create/multiple/new/categories',
         ),
         new Get(
-            uriTemplate: '/get/catagery/{id}'
+            security: "is_granted('ROLE_ADMIN')",
+            uriTemplate: '/get/category/{id}'
         ),
         new GetCollection(
-            uriTemplate: '/get/catageries'
+            uriTemplate: '/get/catageries',
+            
         ),
         new Delete(
             uriTemplate: '/delete/category/{id}'
@@ -80,6 +82,7 @@ class Category
     
     ##[Link(toProperty: 'category')]
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'category', orphanRemoval: true)]
+    #[Groups('category:read','category:write')]
     private  $products ;
 
 

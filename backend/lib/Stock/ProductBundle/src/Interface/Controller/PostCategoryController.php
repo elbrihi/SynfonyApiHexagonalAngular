@@ -19,7 +19,7 @@ final class PostCategoryController extends AbstractController
         
     ) 
     {
-       // dd($this->categoryManager);
+        dd($this->categoryManager);
     }
 
     public function __invoke(Category $category): Category

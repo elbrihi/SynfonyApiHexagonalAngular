@@ -1,0 +1,22 @@
+<div class="supplier-container mat-elevation-z4">
+    <h2 class="supplier-title">Supplier Information</h2>
+    <form [formGroup]="categoryForm" class="supplier-form" >
+      
+      <!-- Category Name Input -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Le nom de fournisseur</mat-label>
+        <input matInput formControlName="categoryName">
+      </mat-form-field>
+  
+      <!-- Category Status Toggle -->
+      <mat-slide-toggle formControlName="categoryStatus" color="primary">
+        Actif / Inactif
+      </mat-slide-toggle>
+  
+      <div class="form-actions">
+        <button mat-raised-button color="primary" (click)="saveCategoryUpdate()" >Save</button>
+        <button mat-raised-button color="warn" (click)="cancelUpdate()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

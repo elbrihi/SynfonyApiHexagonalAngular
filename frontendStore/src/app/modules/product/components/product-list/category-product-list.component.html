@@ -1,0 +1,127 @@
+<div  class="theme-container">
+
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Filter issues">
+    </mat-form-field>
+  </div>
+  <div class="scrollable" cdkScrollable>
+    <div class="mat-elevation-z2">
+      <table mat-table class="full-width-table" multiTemplateDataRows [dataSource]="listCategories" matSort aria-label="Categories">
+    
+        <!-- Dynamic Columns -->
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ column | titlecase }}</th>
+          <td mat-cell *matCellDef="let category">
+            <ng-container [ngSwitch]="column">
+              <span *ngSwitchCase="'categoryName'">
+                <button mat-icon-button (click)="toggleExpand(category)">
+                  <mat-icon>{{ category.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+                </button>
+                {{ category.categoryName }}
+              </span>
+    
+              <span *ngSwitchCase="'actions'">
+                <button mat-icon-button color="primary">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="updateCategory(category.id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </span>
+    
+              <span *ngSwitchDefault>{{ category[column] }}</span>
+            </ng-container>
+          </td>
+        </ng-container>
+       
+        <ng-container matColumnDef="detailsProduct">
+          <td mat-cell colspan="2" *matCellDef="let element" (click)="tab(element)">
+            <div  class="sub-theme-container" cdkScrollable>
+              <!--- sub table  -->
+              <div class="scrollableofSubTable" cdkScrollable>
+                <table mat-table class="full-width-table"  [dataSource]="getSubItemsDataSource(element)" class="subTableProduct">
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef>Id</th>
+                      <td mat-cell *matCellDef="let sub">{{sub.id}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="productName">
+                      <th mat-header-cell *matHeaderCellDef>Produit</th>
+                      <td mat-cell *matCellDef="let sub">{{sub.productName}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="productDescription">
+                      <th mat-header-cell *matHeaderCellDef>Description</th>
+                      <td mat-cell *matCellDef="let sub">{{sub.productDescription}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="unitPrice">
+                      <th mat-header-cell *matHeaderCellDef>Prix Unitaire </th>
+                      <td mat-cell *matCellDef="let sub">{{sub.unitPrice}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="productTax">
+                      <th mat-header-cell *matHeaderCellDef>Tax </th>
+                      <td mat-cell *matCellDef="let sub">{{sub.productTax}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="createdAt">
+                      <th mat-header-cell *matHeaderCellDef>la date de la creation </th>
+                      <td mat-cell *matCellDef="let sub">{{sub.createdAt}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="modifiedAt">
+                      <th mat-header-cell *matHeaderCellDef>la date de la modufication </th>
+                      <td mat-cell *matCellDef="let sub">{{sub.modifiedAt}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="actions">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <button mat-icon-button color="primary">
+                          <mat-icon aria-label="Add new supplier">add</mat-icon>
+                        </button>
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                          <!-- View Details Button -->
+                        <button mat-icon-button color="primary" >
+                          <mat-icon aria-label="View Details">visibility</mat-icon>
+                        </button>
+            
+                        <button mat-icon-button color="accent" >
+                          <mat-icon aria-label="Edit supplier">edit</mat-icon>
+                        </button>
+                        
+                        <button mat-icon-button color="warn" >
+                          <mat-icon aria-label="Delete supplier">delete</mat-icon>
+                        </button>
+            
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="productColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: productColumns"></tr>
+                </table>
+
+              </div>
+              <mat-paginator class="paginator"
+              #paginator 
+              [length]="totalItems"
+              [pageIndex]="currentProductsPage - 1"
+              [pageSize]="ProductsitemsPerPage"
+              [pageSizeOptions]="[1, 5, 10, 20]"
+              aria-label="Select page"
+              (page)="onPageChangeOfProducts($event, element)">
+          </mat-paginator>
+            </div>
+    
+    
+          </td>
+        </ng-container>
+
+        <!-- Table Header and Body -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let category; columns: displayedColumns;"></tr>
+    
+        <tr mat-row *matRowDef="let row; columns: ['detailsProduct']"></tr>
+    
+      </table>
+    </div>
+  </div>
+
+</div>

@@ -71,16 +71,20 @@ export class SupplierDataSource extends RestDataSource {
         console.error('Error during supplier creation:', err);
         return throwError(() => new Error('Error during supplier creation.'));
       })
-    );;
+    );
   }
 
+  getCategoryBy(id:number)
+  {
+    
+  }
   updateSupplier(id:any,supplier: any)
   {
  
     
     const url = `${this.baseUrl}/create/update/supplier/${id}`;
 
-    console.log(url)
+    
     // Set the correct headers to match the API expectations (application/ld+json)
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token') || ''}`,

@@ -1,0 +1,55 @@
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+  <!-- Dynamic Column Definitions -->
+  <ng-container *ngFor="let column of displayedColumns"
+   matColumnDef="{{column}}">
+    <th mat-header-cell *matHeaderCellDef> {{ column | titlecase }}</th>
+    <td mat-cell *matCellDef="let element"> {{ element[column] }}  </td>
+    <td></td>
+  </ng-container>
+
+
+
+  <!-- Expanded Content Column -->
+  <ng-container matColumnDef="expandedDetail">
+    
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div *ngIf="isExpanded(element)" class="example-element-detail">
+        <table mat-table [dataSource]="element.subElements || []" class="inner-table" #paginatorInnerTable>
+
+          <ng-container matColumnDef="subName">
+            <th mat-header-cell *matHeaderCellDef> Sub-Element Name </th>
+            <td mat-cell *matCellDef="let sub"> {{ sub.subName }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="detail">
+            <th mat-header-cell *matHeaderCellDef> Detail </th>
+            <td mat-cell *matCellDef="let sub"> {{ sub.detail }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['subName', 'detail']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['subName', 'detail'];"></tr>
+
+        </table>
+
+        <!-- Paginator for Inner Table -->
+        <mat-paginator #paginatorInner [pageSize]="2" showFirstLastButtons></mat-paginator>
+
+      </div>
+    </td>
+     
+  </ng-container>
+
+  <!-- Table Rows -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;" 
+      (click)="toggleRow(element, displayedColumns)"
+      [class.example-element-row]="element.subElements?.length"
+      [class.example-expanded-row]="isExpanded(element)">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"  class="example-detail-row"></tr>
+
+</table>
+
+<!-- Paginator for Main Table -->
+<mat-paginator #paginatorMain [pageSize]="5" showFirstLastButtons></mat-paginator>

@@ -116,7 +116,22 @@ export class CustomSidenavComponent {
             icon: 'category',
             label: 'Categories',
             route: 'category',
-          }
+          },
+          { 
+            icon: 'product',
+            label: 'Produis',
+            route: 'product',
+          },
+          { 
+            icon: 'subitem',
+            label: 'SubItem',
+            route: 'subitem',
+          },
+          { 
+            icon: 'datatabletuto',
+            label: 'Datatabletuto',
+            route: 'datatabletuto',
+          },
         ]
       },
       { 

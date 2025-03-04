@@ -34,6 +34,9 @@ import { SupplierListComponent } from "../supplier/components/supplier-list/supp
 import { SupplierDetailsComponent } from "../supplier/dialogs/details/supplier-details/supplier-details.component";
 import { SupplierUpdateComponent } from "../supplier/dialogs/update/supplier.update/supplier.update.component";
 import { CategoryListComponent } from "../product/components/category-list/category-list.component";
+import { CategoryProductListComponent } from "../product/components/product-list/category-product-list.component";
+import { DatatableSubitemComponent } from "../product/components/datatable-subitem/datatable-subitem.component";
+import { DatatableTutoComponent } from "../product/components/datatable-tuto/datatable-tuto.component";
 
 
 @NgModule({
@@ -61,7 +64,11 @@ import { CategoryListComponent } from "../product/components/category-list/categ
         SupplierListComponent,
         SupplierDetailsComponent,
         SupplierUpdateComponent,
-        CategoryListComponent
+        CategoryListComponent,
+        CategoryProductListComponent,
+        DatatableSubitemComponent,
+        DatatableTutoComponent,
+
 
     ],
     imports:[
@@ -101,7 +108,8 @@ import { CategoryListComponent } from "../product/components/category-list/categ
         SupplierListComponent,
         SupplierDetailsComponent,
         SupplierUpdateComponent,
-        CategoryListComponent
+        CategoryListComponent,
+        DatatableSubitemComponent
 
     ],
 

@@ -6,11 +6,13 @@ import { LogoutComponent } from './modules/auth/components/logout/logout.compone
 import { CommentsComponent } from './pages/comments/comments.component';
 import { VediosComponent } from './pages/vedios.component';
 import { AnalyticsComponent } from './pages/analytics/analytics.component';
-import { ContentComponent } from './pages/content/content.component';
 import { StoreComponent } from './modules/store/store.component';
 import { AuthGuardService } from './core/guards/auth.guard.service';
 import { SupplierListComponent } from './modules/supplier/components/supplier-list/supplier-list.component';
 import { CategoryListComponent } from './modules/product/components/category-list/category-list.component';
+import { CategoryProductListComponent } from './modules/product/components/product-list/category-product-list.component';
+import { DatatableSubitemComponent } from './modules/product/components/datatable-subitem/datatable-subitem.component';
+import { DatatableTutoComponent } from './modules/product/components/datatable-tuto/datatable-tuto.component';
 
 
 const routes: Routes = [
@@ -35,7 +37,6 @@ const routes: Routes = [
       },
       {
         path: 'content',
-        component: ContentComponent,
         children: [
           {
             path: 'vedios', // Correct spelling
@@ -49,11 +50,10 @@ const routes: Routes = [
       },
       {
         path: 'supplier',
-        component: SupplierListComponent,
         children: [
           {
             path: 'supplier', // Correct spelling
-            component: VediosComponent // Ensure the component name matches
+            component: SupplierListComponent // Ensure the component name matches
           },
           {
             path: 'analytics',
@@ -63,15 +63,22 @@ const routes: Routes = [
       },
       {
         path: 'category',
-        component: CategoryListComponent,
         children: [
           {
             path: 'category', // Correct spelling
             component: CategoryListComponent // Ensure the component name matches
           },
           {
-            path: 'analytics',
-            component: AnalyticsComponent
+            path: 'product',
+            component: CategoryProductListComponent
+          },
+          {
+            path: 'subitem',
+            component: DatatableSubitemComponent
+          },
+          {
+            path: 'datatabletuto',
+            component: DatatableTutoComponent
           }
         ]
       },

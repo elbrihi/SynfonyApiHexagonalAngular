@@ -8,7 +8,6 @@ use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Put;
-use ApiPlatform\State\CreateProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -28,7 +27,7 @@ use Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Provider\State\PostPr
 #[ApiResource(
     order: ['id' => 'DESC'],
     operations:[
-           new Post(
+            new Post(
                 security: "is_granted('ROLE_USER')",
                 uriTemplate:'/create/new/category/{categoryId}/supplier/{supplierId}/products',
                 uriVariables: [
@@ -94,34 +93,34 @@ class Product
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer', unique: true)]
+    #[Groups(['category:read','category:write'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     private ?string $productName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     private ?string $productDescription = null;
 
 
     #[ORM\Column]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     private ?float $productTax = null;
 
 
     #[ORM\ManyToOne(inversedBy: 'products')]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     #[ORM\JoinColumn( nullable: false)]
     
     #[ORM\Column]
     
     private ?float $unitPrice = null;
 
-    private ?Category $category = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
-    #[Groups(['product:read', 'product:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write'])]
     private ?User $user = null;
 
     private ?int $categoryId = null ;
@@ -129,33 +128,35 @@ class Product
     private ?int $supplierId = null ;
 
     #[ORM\Column]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     public ?bool $status = true;
 
     #[ORM\Column]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     private ?\DateTimeImmutable $modifiedAt = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'lots')]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     private ?self $product = null;
 
     #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'product')]
-    #[Groups(['product:read', 'product:write','product:read', 'product:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','product:read', 'product:write'])]
     private Collection $lots;
 
     #[ORM\OneToMany(targetEntity: Lot::class, mappedBy: 'product')]
     private Collection $lot;
 
     #[ORM\ManyToOne(inversedBy: 'product')]
-    #[Groups(['product:read', 'product:write','lot:read','lot:write'])]
+    #[Groups(['category:read','category:write','product:read', 'product:write','lot:read','lot:write'])]
     private ?Supplier $supplier = null;
 
-  
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
+    
+    private ?Category $category = null;
 
 
     public function __construct()

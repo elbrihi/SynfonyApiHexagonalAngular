@@ -63,8 +63,7 @@ export class SupplierUpdateComponent {
   }
   updateSupplier()
   {
-
-    
+     
     this.supplierDataSource.updateSupplier(this.supplier.id, this.supplierForm.value)
       .subscribe({
         next: () => {
@@ -75,6 +74,6 @@ export class SupplierUpdateComponent {
           console.error('Error updating supplier:', err);
           alert('Error updating supplier. Please try again.'); // Or use a snackbar
         }
-      });
+    });
   }
 }

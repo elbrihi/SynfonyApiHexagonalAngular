@@ -1,0 +1,119 @@
+// General Variables for Theming
+:root {
+    --sys-primary: #1e88e5;
+    --sys-surface-container: #121212;
+    --sys-on-surface: #ffffff;
+    --scrollable-bg: #1f1f1f;
+    --scrollable-border: #3a3a3a;
+  }
+  
+  // Container Styling
+  .supplier-container {
+    display: flex; // Ensure flexbox works
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--sys-surface-container);
+    color: var(--sys-on-surface);
+    border-radius: 8px;
+    padding: 16px;
+    max-height: 80vh;
+    overflow-y: auto;
+  
+    // Scrollbar Styling
+    scrollbar-color: var(--scrollable-border) var(--scrollable-bg);
+    scrollbar-width: thin;
+  
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scrollable-border);
+      border-radius: 4px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background-color: var(--scrollable-bg);
+    }
+  }
+  
+  // Title Styling
+  .supplier-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    //color: var(--sys-primary);
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--scrollable-border);
+  }
+  
+  // Form Styling
+  .supplier-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+  
+  // Form Field Styling
+  .form-field {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  // Form Actions Styling
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  
+    button {
+      min-width: 100px;
+      font-weight: bold;
+  
+      &:first-of-type {
+        color: var(--sys-on-surface);
+        //background-color: var(--sys-primary);
+  
+        &:hover {
+          //background-color: darken(var(--sys-primary), 10%);
+        }
+      }
+  
+      &:last-of-type {
+        background-color: #d32f2f;
+         color: var(--sys-on-surface);
+  
+        &:hover {
+          background-color: darken(#d32f2f, 10%);
+        }
+      }
+    }
+  }
+  
+  // Responsive Layout
+  @media screen and (max-width: 768px) {
+    .supplier-container {
+      padding: 8px;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+      align-items: stretch;
+  
+      button {
+        width: 100%;
+      }
+    }
+  }
+  

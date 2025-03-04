@@ -4,6 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CategoryListDataSource, CategoryListItem } from './category-list-datasource';
 import { CategoryDataSourceService } from '../../services/category.data.source.service';
+import { Category } from '../../models/category.model';
+import { UpdateCategoryComponent } from '../../dialogs/update/update-category/update-category.component';
+import { AddCategoryComponent } from '../../dialogs/add/add-category/add-category.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-category-list',
@@ -21,9 +25,11 @@ export class CategoryListComponent implements AfterViewInit  , OnInit{
   categoeyDataSource = inject(CategoryDataSourceService)
   categories: any[] = []
   listCategories = new MatTableDataSource<any>()
+  dialog = inject(MatDialog)
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'categoryName','actions'];
+  displayedProductCulumns = ['id', 'productName','productDescription','actions'];
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -51,5 +57,22 @@ export class CategoryListComponent implements AfterViewInit  , OnInit{
       error: (err) => console.error('Error fetching categories:', err)
       
      });
+  }
+
+  tab(element:any)
+  {
+
+  }
+  saveCategory(): void {
+    const dialogRef = this.dialog.open(AddCategoryComponent);
+    dialogRef.afterClosed().subscribe(() => this.loadCategories());
+  }
+
+  updateCategory(id: number): void {
+    const dialogRef = this.dialog.open(UpdateCategoryComponent, {
+      data: { id } as Category,
+    });
+
+    dialogRef.afterClosed().subscribe(() => this.loadCategories());
   }
 }
