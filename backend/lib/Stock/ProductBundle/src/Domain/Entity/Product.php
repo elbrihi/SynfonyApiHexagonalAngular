@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Put;
+use Container4QbxxeC\getCategoryService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,6 +20,7 @@ use Stock\UserBundle\Domain\Entity\User;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Stock\ProductBundle\Domain\Entity\Category;
 use Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Processor\State\ProductPutProcessor;
+use Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Provider\State\GetProductByCategoryProvider;
 use Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Provider\State\PostProductProvider;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -61,6 +63,20 @@ use Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Provider\State\PostPr
                 uriTemplate: '/get/products/by/paginations',
                 paginationClientItemsPerPage: true,
                 paginationItemsPerPage: true,
+
+            ),
+            new GetCollection(
+                uriTemplate: '/categories/{categoryId}/products/by/paginations',
+                paginationClientItemsPerPage: true,
+                paginationItemsPerPage: true,
+                uriVariables: [
+                    'categoryId' => new Link(
+                        fromClass: Category::class,
+                        toProperty: 'category'
+                    ),
+            
+                ],
+                provider: GetProductByCategoryProvider::class
 
             ),
             new Put(

@@ -49,10 +49,13 @@ export class CategoryProductListComponent implements AfterViewInit, OnInit {
 
   onPageChangeOfProducts(event:any, element:any)
   {
-    console.log("element",element.id)
-    
-    this.ProductsitemsPerPage = event.pageSize; // Update items per page
-    this.currentProductsPage = event.pageIndex + 1; // MatPaginator's pageIndex is zero-based
+    console.log("Category:", element);
+
+    this.ProductsitemsPerPage = event.pageSize;
+    this.currentProductsPage = event.pageIndex + 1;
+  
+    // Slice products based on pagination
+    element.paginatedProducts = this.getPaginatedProducts(element);
   }
 
   loadProductsForCategory(categoryId: number, page: number, pageSize: number) {
@@ -99,7 +102,14 @@ export class CategoryProductListComponent implements AfterViewInit, OnInit {
   getSubItemsDataSource(element:any)
   {
 
+      console.log("element",element)
       return new MatTableDataSource<Product>(element.products || []);
+  }
+    // Function to get paginated products from the category
+  getPaginatedProducts(category: Category): Product[] {
+    const startIndex = (this.currentProductsPage - 1) * this.ProductsitemsPerPage;
+    const endIndex = startIndex + this.ProductsitemsPerPage;
+    return category.products ? category.products.slice(startIndex, endIndex) : [];
   }
   tab(element:any)
   {

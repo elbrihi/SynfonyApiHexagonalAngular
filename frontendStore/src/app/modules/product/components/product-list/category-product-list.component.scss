@@ -140,9 +140,9 @@ tr:hover {
 
 /* Sub-table container */
 .sub-theme-container {
+  border: 1px solid red;
   background-color: var(--sys-surface);
   max-height: 80vh;
-  width: 100%;
   border: 1px solid var(--sys-outline);
   border-radius: 4px;
   padding: 8px;
@@ -153,14 +153,18 @@ tr:hover {
 
 /* Scrollable sub-table wrapper */
 .scrollableofSubTable {
-  width: 100%;
-  overflow: auto; /* Enables both vertical and horizontal scrolling when needed */
+  max-height: 400px; /* Ensure a fixed height for scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  white-space: nowrap;
 }
 
 /* Table styles */
 .subTableProduct {
+  border: 1px solid red;
   width: 100%;
-  table-layout: auto; /* Allows dynamic column resizing */
+  min-width: 900px; /* Ensure table does not shrink below a reasonable width */
+  table-layout: fixed; /* Prevents dynamic resizing */
   border-collapse: collapse;
 }
 
@@ -180,5 +184,3 @@ tr:hover {
   display: flex;
   gap: 8px;
 }
-
-
