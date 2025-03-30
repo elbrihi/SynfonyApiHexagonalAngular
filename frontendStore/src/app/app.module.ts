@@ -11,15 +11,15 @@ import { StoreModule } from './modules/store/store.module';
 import { DemoMaterialModule } from './shared/material-module';
 import { VediosComponent } from './pages/vedios.component';
 import { TestComponent } from './layout/components/header/test/test.component';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { AddDialogComponent } from './modules/supplier/dialogs/add/add.dialog/add-dialog.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCategoryComponent } from './modules/product/dialogs/add/add-category/add-category.component';
 import { UpdateCategoryComponent } from './modules/product/dialogs/update/update-category/update-category.component';
-import { DatatableTutoComponent } from './modules/product/components/datatable-tuto/datatable-tuto.component';
+
 
 
 @NgModule({
@@ -28,14 +28,15 @@ import { DatatableTutoComponent } from './modules/product/components/datatable-t
     VediosComponent,
     TestComponent,
     AddDialogComponent,
-    AddCategoryComponent,
     UpdateCategoryComponent,
+    
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     StoreModule,
     AppRoutingModule,
     DemoMaterialModule,

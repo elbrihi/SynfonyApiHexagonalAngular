@@ -56,7 +56,7 @@ use Stock\ProductBundle\Infrastucture\Persistence\Doctrine\Provider\State\PostPr
             ),
             new Post(
                 security: "is_granted('ROLE_USER')",
-                uriTemplate: "/create//multiple/new/products",
+                uriTemplate: "/create/multiple/new/products",
                 processor: MultipleProductsPostProcessor::class
             ),
             new GetCollection(

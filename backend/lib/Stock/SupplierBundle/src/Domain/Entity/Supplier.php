@@ -60,6 +60,11 @@ use function PHPSTORM_META\map;
             paginationClientItemsPerPage: true,
             paginationItemsPerPage: true,
         ),
+        new GetCollection(
+            uriTemplate: "/get/suppliers",
+            normalizationContext: ['groups' => ['supplier:read']],
+            denormalizationContext: ['groups' => ['supplier:write']],
+        ),
       
     ],
     paginationPartial: true,
@@ -95,7 +100,7 @@ class Supplier
     #[Groups(['supplier:read', 'supplier:write','product:read', 'product:write'])]
     private ?string $mainContact = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank(message: "Email cannot be empty.")]
     #[Assert\Email(message: "The email '{{ value }}' is not a valid email.")]
     #[Groups(['supplier:read', 'supplier:write','product:read', 'product:write'])]

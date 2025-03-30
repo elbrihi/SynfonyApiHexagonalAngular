@@ -5,7 +5,7 @@ import { RouterModule } from "@angular/router";
 
 import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ModelModule } from "./model.module";
 import { VideoComponent } from "../../pages/video/video.component";
 import { MenuItemComponent } from "../../layout/components/menu-item/menu-item.component";
@@ -37,6 +37,8 @@ import { CategoryListComponent } from "../product/components/category-list/categ
 import { CategoryProductListComponent } from "../product/components/product-list/category-product-list.component";
 import { DatatableSubitemComponent } from "../product/components/datatable-subitem/datatable-subitem.component";
 import { DatatableTutoComponent } from "../product/components/datatable-tuto/datatable-tuto.component";
+import { AddProductComponent } from "../product/dialogs/add/add-product/add-product.component";
+import { AddCategoryComponent } from "../product/dialogs/add/add-category/add-category.component";
 
 
 @NgModule({
@@ -68,6 +70,9 @@ import { DatatableTutoComponent } from "../product/components/datatable-tuto/dat
         CategoryProductListComponent,
         DatatableSubitemComponent,
         DatatableTutoComponent,
+        AddProductComponent,
+        AddCategoryComponent,
+        
 
 
     ],
@@ -78,6 +83,7 @@ import { DatatableTutoComponent } from "../product/components/datatable-tuto/dat
         CommonModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
+        FormsModule, 
      
     ],
     providers:[
@@ -109,7 +115,7 @@ import { DatatableTutoComponent } from "../product/components/datatable-tuto/dat
         SupplierDetailsComponent,
         SupplierUpdateComponent,
         CategoryListComponent,
-        DatatableSubitemComponent
+        DatatableSubitemComponent,
 
     ],
 
@@ -119,6 +125,5 @@ export class StoreModule
 {
     public constructor()
     {
-        console.log("StoreModule");
     }
 }

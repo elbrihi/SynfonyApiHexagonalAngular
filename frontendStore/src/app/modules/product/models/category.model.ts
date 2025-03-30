@@ -6,6 +6,12 @@ export class Category
     categoryName?: string = "";
     categoryStatus?: boolean = false;
     products?: Product[] = []
-    expanded?: boolean; // To track expanded state
+   
+    paginatedProducts?: Product[] = []; // For paginated products
+    expanded?: boolean = false; // To track expanded state
+    currentPage?: number = 1; // Default to page 1
+    productsItemsPerPage?: number = 5; // Default to 5 items per page
+    
+    
 
 }

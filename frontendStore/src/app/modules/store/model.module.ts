@@ -26,6 +26,6 @@ export class ModelModule
 {
     public constructor()
     {
-        console.log("ModelModule");
+       
     }
 }

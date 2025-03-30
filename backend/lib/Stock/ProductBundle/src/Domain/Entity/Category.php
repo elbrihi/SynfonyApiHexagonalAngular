@@ -48,6 +48,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             uriTemplate: '/get/category/{id}'
         ),
         new GetCollection(
+            security: "is_granted('ROLE_ADMIN')",
             uriTemplate: '/get/catageries',
             
         ),

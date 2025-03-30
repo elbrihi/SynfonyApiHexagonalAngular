@@ -36,7 +36,7 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Supplier>;
   @ViewChild(CdkScrollable) scrollableContainer!: CdkScrollable; // Add reference to scrollable container
-  @ViewChild('filter') filterInput!: any; // ViewChild for the filter input
+  @ViewChild('supplierFilter') supplierFilterInput!: any; // ViewChild for the filter input
 
   displayedColumns: string[] = [
     'id', 'supplierName', 'uniqueIdentifer',
@@ -88,8 +88,9 @@ export class SupplierListComponent implements AfterViewInit, OnInit {
     });
 
     // Listen for filter input changes
-    this.filterInput.nativeElement.addEventListener('input', (event: any) => {
+    this.supplierFilterInput.nativeElement.addEventListener('input', (event: any) => {
 
+      
       const filterValue = event.target.value;
 
       

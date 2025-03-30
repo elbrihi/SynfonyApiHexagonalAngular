@@ -1,0 +1,107 @@
+<div class="supplier-container mat-elevation-z4">
+    
+  <h2 class="supplier-title">Add Categories</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="saveProducts($event)" >
+    <div formArrayName="products">
+      <div *ngFor="let category of products.controls; let i = index" [formGroupName]="i" class="category-group">
+        
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Le nom de produits</mat-label>
+          <input matInput formControlName="productName" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>La description de produit</mat-label>
+          <input matInput formControlName="productDescription" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>le produit unitaire</mat-label>
+          <input matInput formControlName="unitPrice" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Le tax du produit</mat-label>
+          <input matInput formControlName="productTax" />
+        </mat-form-field>
+      <!-- Supplier Select -->
+      <mat-form-field appearance="outline">
+        <mat-label>Fournisseur</mat-label>
+        <mat-select formControlName="supplierId">
+
+
+          <mat-option disabled>
+            <input type="text" matInput [formControl]="categoryFilter" placeholder="Rechercher une catégorie..." (input)="filterSuppliers()" />
+          </mat-option>
+
+          <mat-divider></mat-divider>
+
+          <!-- Reset Option -->
+           @if(supplierControler.value && !supplierFilter.value)
+           {
+              <mat-option value=""  (click)="supplierControler.setValue('')">
+                <mat-icon>replay</mat-icon> Réinitialiser
+              </mat-option>
+           }
+      
+ 
+          @for (supplier of filteredSuppliers; track $index) 
+          {
+            
+            <mat-option [value]="supplier.id" >
+                {{supplier.supplierName}}
+            </mat-option>
+          }
+
+
+        </mat-select>
+      </mat-form-field>
+
+        <!-- Category Select -->
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Catégorie</mat-label>
+        <mat-select formControlName="categoryId">
+          <!-- Search Input Inside Select -->
+          <mat-option disabled>
+            <input type="text" matInput  [formControl]="categoryFilter" placeholder="Rechercher une catégorie..." (input)="filterCategories()" />
+          </mat-option>
+
+          <mat-divider></mat-divider>
+
+          <!-- Reset Option -->
+          <mat-option value="" *ngIf="categoryControl.value && !categoryFilter.value" (click)="categoryControl.setValue('')">
+            <mat-icon>replay</mat-icon> Réinitialiser
+          </mat-option>
+
+          <!-- Filtered Category Options -->
+          <mat-option *ngIf="filteredCategories.length === 0" disabled>
+            Aucune catégorie trouvée
+          </mat-option>
+          
+          <mat-option *ngFor="let category of filteredCategories" [value]="category.id">
+            {{ category.categoryName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="categoryControl.hasError('required')">Ce champ est requis</mat-error>
+      </mat-form-field>
+
+      
+        <mat-checkbox formControlName="status">Active</mat-checkbox>
+        @if(products.length > 1)
+        {
+          <button mat-icon-button color="warn" (click)="removeProduct(i)" *ngIf="products.length > 1">
+            <mat-icon>delete</mat-icon>
+          </button>
+        }
+
+      </div>
+    </div>
+  
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="button" (click)="addProduct()" >+ Ajoute un produit</button>
+      <button mat-raised-button color="primary" (click)="saveProducts($event)" type="submit">Enregister</button>
+    </div>
+  </form>
+
+</div>

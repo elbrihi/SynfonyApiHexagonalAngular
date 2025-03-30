@@ -80,11 +80,7 @@ export class SupplierDataSource extends RestDataSource {
   }
   updateSupplier(id:any,supplier: any)
   {
- 
-    
-    const url = `${this.baseUrl}/create/update/supplier/${id}`;
-
-    
+    const url = `${this.baseUrl}/create/update/supplier/${id}`; 
     // Set the correct headers to match the API expectations (application/ld+json)
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token') || ''}`,
@@ -98,5 +94,16 @@ export class SupplierDataSource extends RestDataSource {
       })
     );
     
+  }
+  public suppliers(): any
+  {
+    const url = `${this.baseUrl}/get/suppliers`
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token') || ''}`,
+    })
+        
+   return this.http.get(url,{headers})
+  
   }
 }

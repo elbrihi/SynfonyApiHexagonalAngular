@@ -12,9 +12,13 @@
 
         <mat-checkbox formControlName="categoryStatus">Active</mat-checkbox>
 
-        <button mat-icon-button color="warn" (click)="removeCategory(i)" *ngIf="categories.length > 1">
-          <mat-icon>delete</mat-icon>
-        </button>
+        @if(categories.length > 1)
+        {
+          <button mat-icon-button color="warn" (click)="removeCategory(i)" *ngIf="categories.length > 1">
+            <mat-icon>delete</mat-icon>
+          </button>
+        }
+
       </div>
     </div>
 

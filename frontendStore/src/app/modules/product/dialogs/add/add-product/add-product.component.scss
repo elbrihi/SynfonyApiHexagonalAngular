@@ -1,0 +1,62 @@
+.supplier-container{
+  height: 100%;
+}
+.category-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevents wrapping on large screens */
+  gap: 16px;
+  padding: 8px;
+  border-bottom: 1px solid var(--scrollable-border);
+  overflow-x: auto; /* Allows scrolling if needed */
+}
+
+.category-group mat-form-field {
+  flex: 1;
+  min-width: 180px; /* Ensures input fields have a minimum width */
+  max-width: 250px; /* Keeps form fields from stretching too much */
+}
+
+.category-group mat-checkbox {
+  white-space: nowrap; /* Prevents text from breaking */
+}
+
+.category-group button {
+  margin-left: auto; /* Pushes delete button to the right */
+}
+.form-actions{
+
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  margin: 20px;;
+
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .category-group {
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    justify-content: space-between;
+  }
+
+  .category-group mat-form-field {
+    flex-basis: calc(50% - 16px); /* Two items per row */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .category-group {
+    flex-direction: column; /* Stack elements on very small screens */
+  }
+
+  .category-group mat-form-field {
+    width: 100%;
+  }
+
+  .category-group button {
+    width: 100%;
+  }
+}

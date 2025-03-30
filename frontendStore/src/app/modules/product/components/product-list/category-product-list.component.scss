@@ -32,6 +32,7 @@
         background-color: var(--paginator-hover-bg);
     }
   }
+
 }
 
 th, td {
@@ -68,23 +69,48 @@ td:hover {
 :host {
 display: block;
 }
+.display-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
 
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+  }
+}
 .form {
-  margin-bottom: 16px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
   display: flex;
   justify-content: start;
+
+  mat-form-field {
+    width: 100%;
+  }
 }
 
-.form mat-form-field {
-  width: 100%;
-  max-width: 300px;
+@media (max-width: 767px) {
+  .display-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 
 
 .scrollable {
+  position: relative;
   background-color: var(--scrollable-bg, #f9f9f9); /* Fallback if variable is not defined */
-  border: 1px solid var(--scrollable-border, #ccc); /* Fallback border */
+ border: 1px solid var(--scrollable-border, #ccc); /* Fallback border */
+// border: 1px solid blue;
+
   border-radius: 8px;
   padding: 16px;
   
@@ -136,6 +162,52 @@ th {
 tr:hover {
   background-color: var(--sys-surface-container-high);
 }
+/* Add Product Button Styles */
+.add-product-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50px; /* Rounded corners */
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase; /* Optional: uppercase for text */
+}
+
+/* Hover and Focus Effects */
+.add-product-btn:hover,
+.add-product-btn:focus {
+  background-color: #3f51b5; /* Darker blue on hover */
+  color: white;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Active Button (When clicked) */
+.add-product-btn:active {
+  background-color: #303f9f; /* Even darker blue when active */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Icon Styling */
+.add-product-btn mat-icon {
+  font-size: 20px; /* Adjust size of the icon */
+  margin-right: 8px; /* Space between icon and text */
+}
+
+/* For small screens or mobile devices */
+@media (max-width: 600px) {
+  .add-product-btn {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .add-product-btn mat-icon {
+    font-size: 18px;
+  }
+}
+
 
 
 /* Sub-table container */
@@ -161,7 +233,6 @@ tr:hover {
 
 /* Table styles */
 .subTableProduct {
-  border: 1px solid red;
   width: 100%;
   min-width: 900px; /* Ensure table does not shrink below a reasonable width */
   table-layout: fixed; /* Prevents dynamic resizing */
@@ -183,4 +254,64 @@ tr:hover {
 .action-buttons {
   display: flex;
   gap: 8px;
+}
+
+// Base button styles
+.add-product-btn {
+  position: sticky;
+  bottom: 50px; // Fixed at the bottom of the scrollable container
+  right: 16px; // Aligned to the right
+  z-index: 10; // Ensure the button stays on top
+  display: flex;
+  align-items: center;
+  gap: 8px; // Space between the icon and text
+  padding: 20px 24px;
+  border-radius: 50px; // Rounded corners
+  background-color: var(--sys-primary); // Button background color
+  color: var(--sys-on-primary); // Text color
+  transition: all 0.3s ease-in-out; // Smooth transition for hover/focus
+  border: none;
+
+  // Hover and focus effects
+  &:hover,
+  &:focus {
+    background-color: var(--sys-primary-fixed); // Slightly different background on hover/focus
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Shadow on hover
+    transform: translateY(-2px); // Slight lift effect
+    color: var(--sys-on-primary-fixed); // Adjust text color
+  }
+
+  // Focus style for accessibility
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(98, 0, 234, 0.2);
+  }
+
+  // Mat-icon customization
+  mat-icon {
+    font-size: 20px; // Adjust icon size
+  }
+
+  // Media Queries for Responsive Design
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+    font-size: 14px;
+    right: 12px;
+    bottom: 12px;
+
+    mat-icon {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 16px;
+    font-size: 12px;
+    right: 10px;
+    bottom: 10px;
+
+    mat-icon {
+      font-size: 16px;
+    }
+  }
 }

@@ -50,6 +50,7 @@ export class AddCategoryComponent {
   }
   // Method to add a new category input
   addCategory(): void {
+    console.log("category :", this.categories)
     this.categories.push(this.createCategory());
   }
 
