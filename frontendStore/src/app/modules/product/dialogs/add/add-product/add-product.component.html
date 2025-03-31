@@ -1,6 +1,6 @@
-<div class="supplier-container mat-elevation-z4">
+<div class="products-container mat-elevation-z4">
     
-  <h2 class="supplier-title">Add Categories</h2>
+  <h2 class="supplier-title">Ajouter les Produits</h2>
 
   <form [formGroup]="productForm" (ngSubmit)="saveProducts($event)" >
     <div formArrayName="products">
@@ -99,8 +99,17 @@
     </div>
   
     <div class="form-actions">
-      <button mat-raised-button color="primary" type="button" (click)="addProduct()" >+ Ajoute un produit</button>
-      <button mat-raised-button color="primary" (click)="saveProducts($event)" type="submit">Enregister</button>
+      
+      <div class="left-button">
+        <button mat-raised-button color="primary" type="button" (click)="addProduct()" >+ Ajoute un produit</button>
+        <button mat-raised-button color="primary" (click)="saveProducts($event)" type="submit">Enregister</button>
+      </div>
+      <div class="right-button">
+        <button mat-raised-button color="primary" type="button" class="close" (click)="close()">
+          Fermer
+        </button>
+      </div>
+
     </div>
   </form>
 

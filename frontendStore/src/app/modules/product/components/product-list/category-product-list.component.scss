@@ -41,14 +41,18 @@ th, td {
   overflow: hidden;
   max-width: 150px;
 }
-
-/*th {
+tr {
   background-color: var(--sys-surface-container);
   color: var(--sys-on-surface);
-  position: sticky;
+}
+
+th {
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+ /* position: sticky;
   top: 0;
-  z-index: 2;
-}*/
+  z-index: 2;8*/
+}
 
 tr:hover {
   background-color: var(--sys-surface-container);

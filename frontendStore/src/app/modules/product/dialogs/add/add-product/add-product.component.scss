@@ -1,5 +1,29 @@
-.supplier-container{
+.products-container{
+  display: flex;
+  flex-direction:column;
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-surface);
+  padding: 20px;;
   height: 100%;
+ 
+  // Scrollbar Styling
+  scrollbar-color: var(--scrollable-border) var(--scrollable-bg);
+  scrollbar-width: thin;
+  overflow-y: auto; // Enables vertical scrolling if needed
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollable-border);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--scrollable-bg);
+  }
+  
 }
 .category-group {
   display: flex;
@@ -9,30 +33,68 @@
   padding: 8px;
   border-bottom: 1px solid var(--scrollable-border);
   overflow-x: auto; /* Allows scrolling if needed */
+  overflow-y: auto; /* Allows scrolling if needed */
+  
+  mat-form-field {
+    flex: 1;
+    min-width: 180px; /* Ensures input fields have a minimum width */
+    max-width: 250px; /* Keeps form fields from stretching too much */
+    width: 100%;
+  }
+
+  mat-checkbox {
+    white-space: nowrap; /* Prevents text from breaking */
+  }
+
+  button {
+    margin-left: auto; /* Pushes delete button to the right */
+  }
 }
 
-.category-group mat-form-field {
-  flex: 1;
-  min-width: 180px; /* Ensures input fields have a minimum width */
-  max-width: 250px; /* Keeps form fields from stretching too much */
-}
 
-.category-group mat-checkbox {
-  white-space: nowrap; /* Prevents text from breaking */
-}
 
 .category-group button {
   margin-left: auto; /* Pushes delete button to the right */
 }
-.form-actions{
-
+.form-actions {
   padding-bottom: 8px;
   display: flex;
+  justify-content: space-between;
   flex-direction: row-reverse;
   gap: 20px;
-  margin: 20px;;
+  margin: 20px;
 
+  .left-button {
+    display: flex;
+    gap: 25px;
+  }
+
+  button {
+    min-width: 100px;
+    font-weight: bold;
+  }
+
+  // "Enregistrer" Button - New Color
+  .save-button {
+    background-color: #00796B; // Teal color
+    color: white;
+
+    &:hover {
+      background-color: darken(#00796B, 10%);
+    }
+  }
+
+  // "Fermer" Button - Keep default styling
+  .close {
+    background-color: #d32f2f;
+    color: var(--sys-on-surface);
+
+    &:hover {
+      background-color: darken(#d32f2f, 10%);
+    }
+  }
 }
+
 
 
 /* Responsive Design */
@@ -40,6 +102,16 @@
   .category-group {
     flex-wrap: wrap; /* Allows wrapping for smaller screens */
     justify-content: space-between;
+  }
+  .form-actions
+  {
+    display: flex; 
+    justify-content:space-between;
+    .left-button{
+    }
+    .right-button button{
+      left: 0vw;
+    }
   }
 
   .category-group mat-form-field {
@@ -50,13 +122,36 @@
 @media screen and (max-width: 600px) {
   .category-group {
     flex-direction: column; /* Stack elements on very small screens */
+    width: 100%;
   }
 
   .category-group mat-form-field {
+    /* border: 1px solid #00796B; */
+    min-width: 100%; /* Ensures input fields take full width */
+    max-width: 100%; /* Prevents unnecessary constraints */
     width: 100%;
+    padding: 4px; /* Adds slight padding for better appearance */
   }
 
   .category-group button {
     width: 100%;
   }
+
+  .form-actions{
+    flex-direction: column;
+    align-items: stretch;
+
+    button {
+      width: 100%;
+    }
+    .left-button{
+      flex-direction: column;
+      align-items: stretch;
+      button{
+        width: 100%;
+      }
+    }
+  }
+
+  
 }

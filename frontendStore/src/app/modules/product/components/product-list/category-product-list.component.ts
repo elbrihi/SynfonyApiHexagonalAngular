@@ -84,13 +84,13 @@ export class CategoryProductListComponent implements AfterViewInit, OnInit {
   {
       let dialog = this.dialog.open(AddProductComponent,{
         width: '98vw',   // 98% of the viewport width
-        height: '95vh',  // 95% of the viewport height
+        height: '95h',  // 95% of the viewport height
         maxWidth: '98vw',
         maxHeight: '98vh',
-        panelClass: 'full-screen-dialog' // Custom class for more styling
       
  
       })
+      this.dialog.afterAllClosed.subscribe(() => this.loadCategories())
   }
   onPageChangeOfProducts(event:any, category:any)
   {

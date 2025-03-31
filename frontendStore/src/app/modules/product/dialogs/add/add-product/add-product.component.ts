@@ -6,6 +6,7 @@ import { Category } from '../../../models/category.model';
 import { CategoryDataSourceService } from '../../../services/category.data.source.service';
 import { Observable, of } from 'rxjs';
 import { CategoryProductService } from '../../../services/category.product.service';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-add-product',
@@ -24,6 +25,7 @@ export class AddProductComponent implements  OnInit {
   suppliersRepo = inject(SupplierDataSource)
   categorryRepo = inject(CategoryDataSourceService)
   productRepo = inject(CategoryProductService)
+  dialog = inject(Dialog);
 
   filterKeyword: string = ''; // Holds the search keyword for categories
 
@@ -48,6 +50,7 @@ export class AddProductComponent implements  OnInit {
       this.productForm = this.fb.group({
           products: this.fb.array([this.createProductFormGroup()])
       })
+
   }
 
   ngOnInit(): void
@@ -91,7 +94,7 @@ export class AddProductComponent implements  OnInit {
 
   removeProduct(index: number)
   {
-    console.log(index)
+    this.products.removeAt(index)
   }
   get products(): FormArray{
 
@@ -104,6 +107,10 @@ export class AddProductComponent implements  OnInit {
     
   }
 
+  close()
+  {
+    console.log(this.dialog.closeAll())
+  }
 
 
   saveProducts(event: Event): any{
