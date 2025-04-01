@@ -29,6 +29,7 @@ export type MenuItem = {
 
   
       @for (item of menuItems(); track $index) {
+        
         <app-menu-item [item]="item" [collapsed]="sideNavCallapsed()" />
       }
        
@@ -79,92 +80,87 @@ export class CustomSidenavComponent {
     }
 
     
-    menuItems = signal<MenuItem[]>([
-      { 
-        icon: 'dashboard',
-        label: 'Dashboard',
-        route: 'dashboard'
-      },
+    menuItems = signal<MenuItem[]>( [
       { 
         icon: 'dashboard', 
-        label: 'Fournisseurs',
-        route: 'supplier',
+        label: 'Dashboard', 
+        route: 'dashboard', 
+        subItems: [] 
+      },
+      { 
+        icon: 'storefront',  // Supplier-related icon
+        label: 'Fournisseurs', 
+        route: 'supplier', 
         subItems: [ 
           { 
-            icon: 'dashboard',
-            label: 'Liste des Fournisseurs',
-            route: 'supplier',
+            icon: 'list', 
+            label: 'Liste des Fournisseurs', 
+            route: 'supplier', 
+            subItems: [],
           },
           { 
-            icon: 'dashboard',
-            label: 'Analytics',
-            route: 'analytics'
+            icon: 'analytics', 
+            label: 'Analytics', 
+            route: 'analytics', 
+            subItems: [],
           },
           { 
-            icon: 'dashboard',
-            label: 'Vidéos',
-            route: 'videos'
+            icon: 'video_library', 
+            label: 'Vidéos', 
+            route: 'videos', 
+            subItems: [],
           }
         ]
       },
       { 
-        icon: 'catalog', 
-        label: 'Produits',
-        route: 'category',
+        icon: 'category',  // Product categories icon
+        label: 'Produits', 
+        route: 'category', 
         subItems: [ 
           { 
-            icon: 'category',
-            label: 'Categories',
-            route: 'category',
+            icon: 'category', 
+            label: 'Categories', 
+            route: 'category', 
+            subItems: [],
           },
           { 
-            icon: 'product',
-            label: 'Produis',
-            route: 'product',
-          },
-          { 
-            icon: 'subitem',
-            label: 'SubItem',
-            route: 'subitem',
-          },
-          { 
-            icon: 'datatabletuto',
-            label: 'Datatabletuto',
-            route: 'datatabletuto',
+            icon: 'inventory_2',  // Better icon for products
+            label: 'Produits', 
+            route: 'product', 
+            subItems: [],
           },
         ]
       },
       { 
-        icon: 'dashboard',
-        label: 'Content',
-        route: 'content',
+        icon: 'article',  // Content-related icon
+        label: 'Content', 
+        route: 'content', 
         subItems: [ 
           { 
-            icon: 'dashboard',
-            label: 'Content',
-            route: 'content',
+            icon: 'article', 
+            label: 'Content', 
+            route: 'content', 
+            subItems: [],
           },
           { 
-            icon: 'dashboard',
-            label: 'Analytics',
-            route: 'analytics'
+            icon: 'insights', 
+            label: 'Analytics', 
+            route: 'analytics', 
+            subItems: [],
           },
-          { 
-            icon: 'dashboard',
-            label: 'Vidéos',
-            route: 'videos'
-          }
         ]
       },
       { 
-        icon: 'dashboard',
-        label: 'Analytics',
-        route: 'analytics'
+        icon: 'bar_chart',  // Analytics
+        label: 'Analytics', 
+        route: 'analytics', 
+        subItems: [],
       },
       { 
-        icon: 'dashboard',
-        label: 'Comments',
-        route: 'comments'
+        icon: 'comment',  // Comments section
+        label: 'Comments', 
+        route: 'comments', 
+        subItems: [],
       }
     ]);
 
